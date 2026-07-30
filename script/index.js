@@ -26,6 +26,9 @@ function toggleIntro() {
 // ===============================
 // NAVIGATION PARCHEMIN
 // ===============================
+const page1 = document.getElementById('page1');
+const page2 = document.getElementById('page2');
+
 function showPage2() {
     page1.style.display = 'none';
     page2.style.display = 'block';
@@ -95,7 +98,7 @@ hintOverlay.addEventListener('click', function (e) {
 // ===============================
 // ⭐ ZONE 1 = afficher Eldrin + bulle
 // ===============================
-const zone1 = document.querySelector('.zone-enigme');
+const zone1 = document.querySelector('.zone-enigme1');
 const eldrinImg = document.getElementById('eldrin-img');
 const eldrinBubble = document.getElementById('eldrin-bubble');
 
@@ -113,13 +116,12 @@ zone1.addEventListener('click', (e) => {
 // ===============================
 // ⭐ ZONE 2 = ouvrir une box de mot de passe
 // ===============================
-const zone2 = document.querySelector('.zone-enigme-2');
+const zone2 = document.querySelector('.zone-enigme2');
 const passwordOverlay = document.getElementById('password-overlay');
 const passwordInput = document.getElementById('password-input');
 const passwordSubmit = document.getElementById('password-submit');
 const passwordError = document.getElementById('password-error');
 
-// Mot de passe à définir ici
 const CORRECT_PASSWORD = "eldoria";
 
 zone2.addEventListener('click', (e) => {
@@ -133,7 +135,6 @@ passwordSubmit.addEventListener('click', () => {
         passwordError.style.display = "none";
         passwordOverlay.style.display = "none";
 
-        // 👉 Action quand le mot de passe est bon
         eldrinImg.style.display = "block";
         eldrinBubble.style.display = "block";
 
@@ -147,8 +148,8 @@ passwordSubmit.addEventListener('click', () => {
 // ===============================
 document.addEventListener('click', (e) => {
 
-    if (e.target.classList.contains('zone-enigme')) return;
-    if (e.target.classList.contains('zone-enigme-2')) return;
+    if (e.target.classList.contains('zone-enigme1')) return;
+    if (e.target.classList.contains('zone-enigme2')) return;
     if (e.target.id === 'eldrin-img') return;
     if (e.target.id === 'eldrin-bubble') return;
     if (e.target.closest('#eldrin-bubble')) return;
