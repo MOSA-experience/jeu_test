@@ -495,10 +495,10 @@ textarea::-webkit-input-placeholder {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
+/* ============================
+   ⭐ IMAGE AUDIO DANS LE PARCHEMIN
+   ============================ */
 .intro-content img {
-    width: clamp(25px, 2vw, 35px);
+    width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
     height: auto;
 }
-
-
-
