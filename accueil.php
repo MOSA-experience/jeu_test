@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Jeu test</title>
-    <link rel="stylesheet" href="/jeux/style/accueil.css">
+    <link rel="stylesheet" href="/jeux/jeu_test/style/accueil.css">
 </head>
 <body>
 
