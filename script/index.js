@@ -114,42 +114,11 @@ zone1.addEventListener('click', (e) => {
 });
 
 // ===============================
-// ⭐ ZONE 2 = ouvrir une box de mot de passe
-// ===============================
-const zone2 = document.querySelector('.zone-enigme2');
-const passwordOverlay = document.getElementById('password-overlay');
-const passwordInput = document.getElementById('password-input');
-const passwordSubmit = document.getElementById('password-submit');
-const passwordError = document.getElementById('password-error');
-
-const CORRECT_PASSWORD = "eldoria";
-
-zone2.addEventListener('click', (e) => {
-    e.stopPropagation();
-    passwordOverlay.style.display = "flex";
-});
-
-// Vérification du mot de passe
-passwordSubmit.addEventListener('click', () => {
-    if (passwordInput.value.trim().toLowerCase() === CORRECT_PASSWORD) {
-        passwordError.style.display = "none";
-        passwordOverlay.style.display = "none";
-
-        eldrinImg.style.display = "block";
-        eldrinBubble.style.display = "block";
-
-    } else {
-        passwordError.style.display = "block";
-    }
-});
-
-// ===============================
 // ⭐ CACHER TOUT QUAND ON CLIQUE AILLEURS
 // ===============================
 document.addEventListener('click', (e) => {
 
     if (e.target.classList.contains('zone-enigme1')) return;
-    if (e.target.classList.contains('zone-enigme2')) return;
     if (e.target.id === 'eldrin-img') return;
     if (e.target.id === 'eldrin-bubble') return;
     if (e.target.closest('#eldrin-bubble')) return;
@@ -157,7 +126,6 @@ document.addEventListener('click', (e) => {
     if (e.target.id === 'eldrin-restart-btn') return;
     if (e.target.id === 'eldrin-paper') return;
     if (e.target.classList.contains('overlay')) return;
-    if (e.target.closest('.password-box')) return;
 
     eldrinImg.style.display = "none";
     eldrinBubble.style.display = "none";
