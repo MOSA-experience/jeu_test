@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu test</title>
+    <link rel="stylesheet" href="/jeux/style/accueil.css">
+</head>
+<body>
+
+    <!-- IMAGE + ZONE ÉNIGME 1 -->
+    <div class="image-scroll">
+        <div class="image-container">
+            <img src="/jeux/style/images/fond_jeu_test.png" alt="escape game map" draggable="false">
+            <div class="zone-enigme1"></div>
+        </div>
+    </div>
+
+     <!-- IMAGE + ZONE ÉNIGME 2-->
+    <div class="image-scroll">
+        <div class="image-container">
+            <img src="/jeux/style/images/fond_jeu_test.png" alt="escape game map" draggable="false">
+            <div class="zone-enigme2"></div>
+        </div>
+    </div>
+
+    <!-- Overlay + box explicative -->
+    <div id="intro-overlay" class="overlay">
+
+        <div class="intro-box"
+             style="background-image: url('/jeux/style/images/parchemin.jpg');"
+             onclick="event.stopPropagation();">
+
+            <div class="close-parchment">✖</div>
+
+            <!-- ONGLET 1 -->
+            <div id="page1" class="intro-page">
+                <h2>Le mystère d'Eldoria</h2>
+
+                <div class="intro-content">
+                    <p>
+                        Vous êtes né à Eldoria, un petit village où la magie fait partie du quotidien.
+                        Ici, les lanternes s'illuminent à la tombée de la nuit sans qu'aucune flamme ne les éclaire,
+                        les créatures de la forêt vivent en harmonie avec les habitants et chaque ruelle semble
+                        raconter une histoire oubliée.
+                    </p>
+
+                    <p>
+                        Depuis toujours, ce village vous émerveille. Pourtant, une question ne cesse de vous revenir :
+                        d'où vient toute cette magie ? Les légendes sont nombreuses et personne ne semble connaître
+                        la véritable origine de ce lieu extraordinaire.
+                    </p>
+
+                    <p>
+                        Une rumeur traverse les générations. On raconte qu'un livre, écrit lors de la fondation du village,
+                        renferme toute son histoire et les secrets de sa magie. Beaucoup ont tenté de le retrouver,
+                        mais aucun n'y est parvenu.
+                    </p>
+
+                    <p>
+                        Aujourd'hui, vous décidez de partir à sa recherche pour espérer découvrir la véritable histoire d’Eldoria.
+                    </p>
+                </div>
+
+                <div class="arrow arrow-next" onclick="showPage2()">↠</div>
+            </div>
+
+            <!-- ONGLET 2 -->
+            <div id="page2" class="intro-page" style="display:none;">
+                <h2>Instructions</h2>
+
+                <div class="intro-content">
+                    <p>
+                        Dans cette aventure, tu devras explorer Eldoria et résoudre des énigmes.
+                        Chaque énigme te rapprochera du livre légendaire qui renferme les secrets du village.
+                    </p>
+
+                    <p>
+                        Observe attentivement la carte, interagis avec les éléments, et fais preuve de logique.
+                        Certaines réponses se cachent dans les détails.
+                    </p>
+
+                    <p>
+                        Si jamais tu as besoin d'aide tu peux cliquer sur le point d'interrogation en bas à gauche.
+                        Pour réouvrir le parchemin, clique sur le bouton en bas à droite.
+                    </p>
+
+                    <p>
+                        Parfois tu auras un texte à lire. Clique sur <img src="/jeux/style/images/audio.png" alt="audio"> pour l'écouter.
+                    </p>
+
+                    <p>
+                        Pour commencer, je te conseille de demander de l'aide à quelqu'un. 
+                        Va voir du côté du restaurant, à droite de la fontaine. Tu y trouveras sûrement 
+                        Eldrin, installé à une table comme à son habitude. Il pourra sûrement t'aider.
+                    </p>
+
+                    <p>
+                        Bonne chance, voyageur. Que la magie d’Eldoria guide tes pas.
+                    </p>
+                </div>
+
+                <div class="arrow arrow-prev" onclick="showPage1()">↞</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bouton pour réafficher / cacher la box -->
+    <div class="help-button" onclick="toggleIntro()">✦</div>
+
+    <!-- Bouton indice -->
+    <div class="hint-button" onclick="toggleHint()">?</div>
+
+    <!-- Fenêtre des indices -->
+    <div id="hint-overlay" class="overlay" style="display:none;">
+        <div class="hint-box"
+             style="background-image: url('/jeux/style/images/parchemin.jpg');"
+             onclick="event.stopPropagation();">
+
+            <div class="close-hint">✖</div>
+
+            <h2>Indice</h2>
+
+            <div class="hint-content">
+                <p>Ici tu pourras afficher un indice ou une solution.</p>
+                <p>Tu peux mettre plusieurs paragraphes, ou même plusieurs pages.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ⭐ Image Eldrin -->
+<img id="eldrin-img" src="/jeux/style/images/eldrin.png" alt="Eldrin" style="display:none;">
+
+<!-- ⭐ Bulle de dialogue -->
+<div id="eldrin-bubble" style="display:none;">
+
+    <!-- ⭐ Conteneur interne qui sert d'ancre pour le papier -->
+    <div class="bubble-anchor">
+        <img id="eldrin-paper" src="/jeux/style/images/papier.jpg" alt="papier">
+    </div>
+
+    <p id="eldrin-text">
+        Bonjour, <br> Je suis Eldrin. J'imagine que tu as entendu parler de cet étrange livre...
+        Personne ne sait vraiment d'où il vient. Certains disent qu'il renferme l'histoire de notre village et qu'il 
+        raconte comment la magie est arrivée jusqu'ici. Malheureusement, je ne peux pas t'en dire davantage. 
+        En revanche, il y a peut-être quelqu'un qui pourra te donner des réponses. <br> Au bout du chemin se trouve 
+        une vieille maison abandonnée... Enfin, c'est ce que pensent la plupart des habitants. En réalité, Eldorin, un 
+        vieux mage y vit encore. Il connaît les anciennes légendes d'Eldoria mieux que quiconque, et certains disent 
+        qu'il est le seul à savoir où se cache le fameux livre que tu recherches. Va le trouver. Si quelqu'un peut t'aider 
+        à découvrir ce que tu cherches, c'est bien lui. Cependant, fais attention. Malgré son vieil âge, il a encore toute 
+        sa tête et se méfie énormément des inconnus. Il ne te donnera pas les réponses si facilement. <br> Voici un papier 
+        qui pourra sûrement t'aider. <br> Que la magie d'Eldoria t'accompagne. L'avenir de notre village repose peut-être 
+        entre tes mains... Bonne chance !
+    </p>
+
+    <!-- ⭐ Bouton audio -->
+    <button id="eldrin-audio-btn" class="audio-btn">
+        <img src="/jeux/audios/audio.png" alt="audio">
+    </button>
+
+    <!-- ⭐ Bouton recommencer -->
+    <button id="eldrin-restart-btn" class="audio-btn">
+        <img src="/jeux/audios/restart.png" alt="restart">
+    </button>
+
+    <!-- ⭐ Audio -->
+    <audio id="eldrin-audio" src="/jeux/audios/voix-eldrin.mp3"></audio>
+
+</div>
+
+
+
+    <!-- ⭐ Bouton audio (lecture / pause) -->
+    <button id="eldrin-audio-btn" class="audio-btn">
+        <img src="/jeux/audios/audio.png" alt="audio">
+    </button>
+
+    <!-- ⭐ Bouton recommencer -->
+    <button id="eldrin-restart-btn" class="audio-btn">
+        <img src="/jeux/audios/restart.png" alt="restart">
+    </button>
+
+    <!-- ⭐ Audio -->
+    <audio id="eldrin-audio" src="/jeux/audios/voix-eldrin.mp3"></audio>
+
+    <!-- ⭐ Papier -->
+    <img id="eldrin-paper" src="/jeux/style/images/papier.jpg" alt="papier">
+</div>
+<!-- ⭐ Fenêtre zoom papier -->
+<div id="paper-zoom">
+    <div id="paper-content">
+        <p id="paper-text">
+           La Vérité ne se révèle qu'à ceux qui savent attendre. Les sages 
+           Explorent, Lisent, Observent, puis Réfléchissent.
+        </p>
+        <button id="close-paper">Fermer</button>
+    </div>
+</div>
+
+<!-- ⭐ Fenêtre mot de passe -->
+<div id="password-overlay" class="overlay" style="display:none;">
+    <div class="password-box">
+        <h2>Mot de passe requis</h2>
+
+        <p>Entre le mot de passe pour continuer :</p>
+
+        <input type="text" id="password-input" placeholder="Mot de passe">
+        <button id="password-submit">Valider</button>
+
+        <div id="password-error" style="color:red; display:none;">
+            Mot de passe incorrect.
+        </div>
+    </div>
+</div>
+
+<script src="script/accueil.js"></script>
+
+
+</body>
+</html>
