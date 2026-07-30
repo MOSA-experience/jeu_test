@@ -342,8 +342,8 @@ textarea::-webkit-input-placeholder {
    TEXTE INDICE (plus petit)
    ============================ */
 .hint-content {
-    font-size: clamp(12px, 2vw, 16px); /* ⭐ plus petit */
-    line-height: 1.35;                /* ⭐ plus compact */
+    font-size: clamp(12px, 2vw, 16px);
+    line-height: 1.35;
     color: #2B1A01;
     text-shadow:
         1px 1px 2px rgba(0, 0, 0, 0.5),
@@ -351,48 +351,29 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-   		ZONE ÉNIGME 1 
+        ZONE ÉNIGME 1 
    ============================ */
-
-/* ⭐ Le conteneur de l'image doit être relatif */
 .image-container {
     position: relative;
-    display: inline-block; /* ⭐ pour que la zone suive l'image */
+    display: inline-block;
 }
 
-/* ⭐ La zone est positionnée par rapport à l'image */
 .zone-enigme1 {
     position: absolute;
-
-    /* ⭐ Position sur l’image (à ajuster selon ton énigme) */
-    top: 67%;      /* position verticale */
-    left: 89%;     /* position horizontale */
-
-    width: 2%;    /* largeur du rectangle */
-    height: 5%;   /* hauteur du rectangle */
-
+    top: 67%;
+    left: 89%;
+    width: 2%;
+    height: 5%;
     border: transparent;
-    background: transparent; 
-
-    pointer-events: auto; /* permet de cliquer dessus */
+    background: transparent;
+    pointer-events: auto;
     cursor: pointer;
-
-    z-index: 5; /* au-dessus de l’image mais sous les overlays */
+    z-index: 5;
 }
 
-#eldrin-img {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-
-    /* ⭐ Responsive comme tes boutons */
-    width: clamp(400px, 40vw, 500px);
-    height: auto;
-
-    z-index: 60;
-    pointer-events: none; /* ne bloque pas les clics */
-}
-
+/* ============================
+        ELDRIN IMAGE
+   ============================ */
 #eldrin-img {
     position: fixed;
     bottom: 0px;
@@ -403,14 +384,13 @@ textarea::-webkit-input-placeholder {
     pointer-events: none;
 }
 
+/* ============================
+        BULLE ELDRIN
+   ============================ */
 #eldrin-bubble {
     position: fixed;
-
-    /* ⭐ Position à droite de l'image Eldrin */
     bottom: 20px;
     left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
-
-
     max-width: clamp(260px, 28vw, 380px);
 
     background-image: url('/jeux/style/images/fond_bulle_eldrin.jpg');
@@ -420,7 +400,6 @@ textarea::-webkit-input-placeholder {
 
     border-radius: 14px;
     padding: 18px 22px;
-
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
 
     font-family: 'IM Fell English', serif;
@@ -435,44 +414,52 @@ textarea::-webkit-input-placeholder {
     margin: 0 0 10px 0;
 }
 
-/* ⭐ Bouton audio (reste un bouton mais visuellement une image) */
-#eldrin-audio-btn {
-    background: none;        /* pas de fond */
-    border: none;            /* pas de bordure */
-    padding: 0;              /* pas de padding */
-    cursor: pointer;         /* clic possible */
-    display: inline-block;   /* vrai bouton */
+/* ============================
+   ⭐ BOUTONS AUDIO + RESTART (REGROUPÉS)
+   ============================ */
+
+/* Boutons */
+#eldrin-audio-btn,
+#eldrin-restart-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
 }
 
-/* ⭐ Image à l’intérieur du bouton */
-#eldrin-audio-btn img {
-    width: clamp(25px, 2vw, 35px);   /* responsive */
+/* Images des boutons */
+#eldrin-audio-btn img,
+#eldrin-restart-btn img {
+    width: clamp(25px, 2vw, 35px);
     height: auto;
-    pointer-events: none;            /* l’image ne bloque pas le clic */
+    pointer-events: none;
 }
 
-/* Conteneur interne qui sert d'ancre */
+/* ============================
+        PAPIER DANS LA BULLE
+   ============================ */
 .bubble-anchor {
-    position: absolute;   /* IMPORTANT : ancre fixe */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
 
-/* Image fixée à la bulle */
 #eldrin-paper {
     position: absolute;
-    top: 570px;   /* ajuste ici selon l'endroit exact */
-    left: 160px;  /* ajuste ici */
+    top: 570px;
+    left: 160px;
     width: 55px;
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
 }
 
-
-
+/* ============================
+        ZOOM PAPIER
+   ============================ */
 #paper-zoom {
     position: fixed;
     top: 0;
@@ -502,32 +489,10 @@ textarea::-webkit-input-placeholder {
 }
 
 #paper-text {
-    font-family: 'IM Fell English', serif; /* ⭐ même police que le parchemin */
-    font-size: clamp(22px, 3vw, 32px);     /* ⭐ plus gros */
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(22px, 3vw, 32px);
     color: #2B1A01;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* ⭐ ombre */
-}
-
-#close-paper {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/* ⭐ Bouton restart (même taille + transparent) */
-#eldrin-restart-btn {
-    background: none;     /* bouton transparent */
-    border: none;         /* pas de bordure */
-    padding: 0;           /* pas de padding */
-    cursor: pointer;
-    display: inline-block;
-}
-
-#eldrin-restart-btn img {
-    width: clamp(25px, 2vw, 35px);   /* même taille que le bouton audio */
-    height: auto;
-    pointer-events: none;            /* l’image ne bloque pas le clic */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 
