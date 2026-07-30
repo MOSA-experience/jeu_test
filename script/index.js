@@ -165,10 +165,12 @@ document.getElementById('eldrin-paper').addEventListener('click', (e) => {
     paperZoom.style.display = "flex";
 });
 
+// Fermer en cliquant autour
 paperZoom.addEventListener('click', () => {
     paperZoom.style.display = "none";
 });
 
+// Empêcher la fermeture quand on clique sur le contenu
 paperContent.addEventListener('click', (e) => {
     e.stopPropagation();
 });
