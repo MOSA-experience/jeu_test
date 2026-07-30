@@ -495,4 +495,10 @@ textarea::-webkit-input-placeholder {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
+.intro-content img {
+    width: clamp(25px, 2vw, 35px);
+    height: auto;
+}
+
+
 
