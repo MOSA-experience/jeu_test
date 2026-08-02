@@ -122,16 +122,14 @@
     <!-- ⭐ Image Eldrin -->
     <img id="eldrin-img" src="style/images/eldrin.png" alt="Eldrin" style="display:none;">
 
-    <!-- ⭐ Bulle de dialogue FIXE -->
-    <div id="eldrin-bubble" style="display:none; position:fixed; bottom:20px; left:500px; width:380px; height:260px;">
+    <!-- ⭐ Bulle de dialogue -->
+    <div id="eldrin-bubble" style="display:none; background-image: url('style/images/fond_bulle_eldrin.jpg'); background-size: cover; background-position: center;">
 
-        <!-- ⭐ Image de fond FIXE -->
-        <img class="bubble-bg" src="style/images/fond_bulle_eldrin.jpg" alt="fond bulle" style="position:absolute; inset:0; width:100%; height:100%; object-fit:fill;">
+        <div class="bubble-anchor">
+            <img id="eldrin-paper" src="style/images/papier.jpg" alt="papier">
+        </div>
 
-        <!-- ⭐ Papier FIXE -->
-        <img id="eldrin-paper" src="style/images/papier.jpg" alt="papier" style="position:absolute; bottom:20px; left:40px; width:120px;">
-
-        <p id="eldrin-text" style="position:relative; z-index:2;">
+        <p id="eldrin-text">
             Bonjour, <br> Je suis Eldrin. J'imagine que tu as entendu parler de cet étrange livre...
             Personne ne sait vraiment d'où il vient. Certains disent qu'il renferme l'histoire de notre village et qu'il 
             raconte comment la magie est arrivée jusqu'ici. Malheureusement, je ne peux pas t'en dire davantage. 
@@ -160,15 +158,20 @@
 
     </div>
 
-    <!-- ⭐ Fenêtre zoom papier -->
-    <div id="paper-zoom">
-        <div id="paper-content">
-            <p id="paper-text">
-               La Vérité ne se révèle qu'à ceux qui savent attendre. Les sages 
-               Explorent, Lisent, Observent, puis Réfléchissent.
-            </p>
-        </div>
+    <!-- ⭐ Papier -->
+    <img id="eldrin-paper" src="style/images/papier.jpg" alt="papier">
+
+</div>
+
+<!-- ⭐ Fenêtre zoom papier -->
+<div id="paper-zoom">
+    <div id="paper-content">
+        <p id="paper-text">
+           La Vérité ne se révèle qu'à ceux qui savent attendre. Les sages 
+           Explorent, Lisent, Observent, puis Réfléchissent.
+        </p>
     </div>
+</div>
 
 <script src="script/index.js"></script>
 
