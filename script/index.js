@@ -178,3 +178,7 @@ paperZoom.addEventListener('click', () => {
 paperContent.addEventListener('click', (e) => {
     e.stopPropagation();
 });
+
+document.getElementById("zone-enigme2").addEventListener("click", function() {
+    window.location.href = "enigme2.html";
+});
