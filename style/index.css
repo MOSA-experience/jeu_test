@@ -14,10 +14,9 @@ html, body {
     height: 100%;
     background: #000;
 
-    /* ⭐ Page scrollable mais scrollbar transparente */
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
+    scrollbar-width: none;
 
     font-family: 'IM Fell English', serif;
     text-transform: none;
@@ -44,7 +43,7 @@ body::-webkit-scrollbar-track {
     height: 100vh;
     overflow: auto;
     scrollbar-width: none;
-    cursor: grab; /* ⭐ curseur propre */
+    cursor: grab;
 }
 
 .image-scroll::-webkit-scrollbar {
@@ -61,11 +60,10 @@ body::-webkit-scrollbar-track {
     object-position: center;
     margin: auto;
 
-    /* ⭐ Empêche le navigateur de capturer l’image */
     -webkit-user-drag: none;
     user-select: none;
     -webkit-user-select: none;
-    pointer-events: none; /* ⭐ essentiel */
+    pointer-events: none;
 }
 
 /* ============================
@@ -84,11 +82,8 @@ body::-webkit-scrollbar-track {
     z-index: 10;
 }
 
-/* Box parchemin */
 .intro-box {
     color: #ffffff;
-
-    /* ⭐ Légèrement plus petit */
     width: clamp(280px, 80vw, 600px);
     height: clamp(260px, 70vh, 600px);
 
@@ -106,7 +101,7 @@ body::-webkit-scrollbar-track {
     justify-content: center;
     align-items: center;
 
-    position: relative; /* ⭐ flèches dedans */
+    position: relative;
 
     overflow-y: auto;
     scrollbar-width: none;
@@ -116,7 +111,6 @@ body::-webkit-scrollbar-track {
     width: 0px;
 }
 
-/* Titres */
 .intro-box h2 {
     text-align: center;
     margin: 0 0 20px 0;
@@ -129,12 +123,9 @@ body::-webkit-scrollbar-track {
         0 0 6px rgba(255, 255, 255, 0.7);
 }
 
-/* Texte */
 .intro-content {
     margin-top: 10px;
-
     font-size: clamp(16px, 2.5vw, 19px);
-
     line-height: 1.45;
     padding-right: 10px;
 }
@@ -147,8 +138,15 @@ body::-webkit-scrollbar-track {
         0 0 6px rgba(255, 255, 255, 0.7);
 }
 
+/* ⭐ IMAGE AUDIO DANS LE PARCHEMIN */
+.intro-content img {
+    width: clamp(25px, 2vw, 35px);
+    height: auto;
+    vertical-align: middle;
+}
+
 /* ============================
-   FLÈCHES (DANS LE PARCHEMIN)
+   FLÈCHES
    ============================ */
 
 .arrow {
@@ -156,7 +154,6 @@ body::-webkit-scrollbar-track {
     bottom: 0px;
 
     font-size: clamp(28px, 5vw, 42px);
-
     font-weight: bold;
     cursor: pointer;
     color: #3b2f1c;
@@ -169,13 +166,8 @@ body::-webkit-scrollbar-track {
     z-index: 20;
 }
 
-.arrow-next {
-    right: 20px;
-}
-
-.arrow-prev {
-    left: 20px;
-}
+.arrow-next { right: 20px; }
+.arrow-prev { left: 20px; }
 
 .arrow-next:hover,
 .arrow-prev:hover {
@@ -206,136 +198,6 @@ body::-webkit-scrollbar-track {
     box-shadow:
         0 0 10px rgba(255, 240, 200, 0.6),
         0 0 25px rgba(255, 200, 120, 0.4);
-}
-
-/* ============================
-   BARRE D'ÉCRITURE INVISIBLE
-   ============================ */
-
-input[type="text"],
-textarea {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: rgba(0,0,0,0);
-    caret-color: transparent !important;
-    font-family: 'IM Fell English', serif;
-    font-size: 26px;
-}
-
-input[type="text"]::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-    color: transparent;
-}
-
-* {
-    caret-color: transparent !important;
-}
-
-/* ============================
-   CROIX DE FERMETURE
-   ============================ */
-.close-parchment {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-
-    font-size: clamp(16px, 2.5vw, 20px);
-    font-weight: bold;
-
-    color: #3b2f1c;
-  
-    cursor: pointer;
-    z-index: 30;
-
-    box-shadow:
-        0 0 6px rgba(0,0,0,0.4),
-        0 0 10px rgba(255, 200, 120, 0.4);
-
-    transition: transform 0.15s, background 0.15s;
-}
-
-/* ============================
-   BOUTON INDICE (bas gauche)
-   ============================ */
-.hint-button {
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-
-    width: clamp(35px, 6vw, 60px);
-    height: clamp(35px, 6vw, 60px);
-    font-size: clamp(20px, 4vw, 32px);
-
-    background: radial-gradient(circle, #f8e7c4, #c7a878);
-    color: #3b2f1c;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 50;
-
-    box-shadow:
-        0 0 10px rgba(255, 240, 200, 0.6),
-        0 0 25px rgba(255, 200, 120, 0.4);
-}
-
-/* ============================
-   BOX INDICE (plus petite)
-   ============================ */
-.hint-box {
-    width: clamp(200px, 55vw, 380px);   /* ⭐ plus petit */
-    height: clamp(160px, 45vh, 320px);  /* ⭐ plus petit */
-
-    padding: clamp(12px, 3vw, 20px);    /* ⭐ réduit */
-    border-radius: 10px;
-
-    box-shadow:
-        0 0 20px rgba(255, 220, 150, 0.35),
-        0 0 45px rgba(255, 200, 120, 0.25);
-
-    border: 3px solid rgba(80, 60, 40, 0.6);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-.hint-box::-webkit-scrollbar {
-    width: 0;
-}
-
-/* ============================
-   CROIX DE FERMETURE INDICE (plus petite)
-   ============================ */
-.close-hint {
-    position: absolute;
-    top: 8px;       /* ⭐ plus haut */
-    right: 8px;     /* ⭐ plus proche du bord */
-
-    font-size: clamp(12px, 2vw, 16px); /* ⭐ plus petit */
-    font-weight: bold;
-
-    color: #3b2f1c;
-    cursor: pointer;
-    z-index: 30;
-
-    box-shadow:
-        0 0 6px rgba(0,0,0,0.4),
-        0 0 10px rgba(255, 200, 120, 0.4);
-
-    transition: transform 0.15s;
-}
-
-.close-hint:hover {
-    transform: scale(1.2);
 }
 
 /* ============================
@@ -415,10 +277,9 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-   ⭐ BOUTONS AUDIO + RESTART (REGROUPÉS)
+   ⭐ BOUTONS AUDIO + RESTART
    ============================ */
 
-/* Boutons */
 #eldrin-audio-btn,
 #eldrin-restart-btn {
     background: none;
@@ -428,7 +289,6 @@ textarea::-webkit-input-placeholder {
     display: inline-block;
 }
 
-/* Images des boutons */
 #eldrin-audio-btn img,
 #eldrin-restart-btn img {
     width: clamp(25px, 2vw, 35px);
@@ -499,8 +359,7 @@ textarea::-webkit-input-placeholder {
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
    ============================ */
 .intro-content img {
-    width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
+    width: clamp(25px, 2vw, 35px);
     height: auto;
     vertical-align: middle;
-
 }
