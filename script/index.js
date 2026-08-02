@@ -139,8 +139,12 @@ const audioBtn = document.getElementById('eldrin-audio-btn');
 
 audioBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (audio.paused) audio.play();
-    else audio.pause();
+
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
 });
 
 // ===============================
