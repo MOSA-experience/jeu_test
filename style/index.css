@@ -542,7 +542,7 @@ textarea::-webkit-input-placeholder {
     background-color: transparent;
     position: absolute;
     top: 30%;
-    left: 60%;
+    left: 70%;
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
