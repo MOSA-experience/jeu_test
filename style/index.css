@@ -138,7 +138,7 @@ body::-webkit-scrollbar-track {
         0 0 6px rgba(255, 255, 255, 0.7);
 }
 
-/* ⭐ IMAGE AUDIO DANS LE PARCHEMIN */
+/* ⭐ IMAGE AUDIO DANS LE PARCHEMIN (modification demandée) */
 .intro-content img {
     width: clamp(25px, 2vw, 35px);
     height: auto;
@@ -277,7 +277,7 @@ body::-webkit-scrollbar-track {
 }
 
 /* ============================
-   ⭐ BOUTONS AUDIO + RESTART
+   ⭐ BOUTONS AUDIO + RESTART (modification demandée)
    ============================ */
 
 #eldrin-audio-btn,
@@ -285,15 +285,15 @@ body::-webkit-scrollbar-track {
     background: none;
     border: none;
     padding: 0;
-    cursor: pointer;
+    cursor: pointer;      /* ⭐ montre que c’est cliquable */
     display: inline-block;
 }
 
 #eldrin-audio-btn img,
 #eldrin-restart-btn img {
-    width: clamp(25px, 2vw, 35px);
+    width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’image audio du parchemin */
     height: auto;
-    pointer-events: none;
+    pointer-events: none;            /* ⭐ laisse le clic passer */
 }
 
 /* ============================
