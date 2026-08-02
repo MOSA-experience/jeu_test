@@ -509,7 +509,7 @@ textarea::-webkit-input-placeholder {
 #eldrin-audio-btn,
 #eldrin-restart-btn {
     background: none;
-    border: none;
+    border: 2px solid red;
     padding: 0;
     cursor: pointer;      /* ⭐ montre que c’est cliquable */
     display: inline-block;
@@ -520,5 +520,6 @@ textarea::-webkit-input-placeholder {
 #eldrin-restart-btn img {
     width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
     height: auto;
-    pointer-events: none;            /* ⭐ laisse le clic passer au bouton */
+    pointer-events: none; 
+    border: 2px solid red;          
 }
