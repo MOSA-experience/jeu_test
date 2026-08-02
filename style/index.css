@@ -385,21 +385,22 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-        BULLE ELDRIN (FIXE)
+        BULLE ELDRIN (FIXE + FOND QUI REMPLIT)
    ============================ */
 #eldrin-bubble {
     position: fixed;
     bottom: 20px;
 
-    /* ⭐ Position fixe à droite de Eldrin */
+    /* ⭐ Position fixe à droite d’Eldrin */
     left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
 
     /* ⭐ Taille FIXE pour empêcher toute déformation */
     width: 380px;
     height: 260px;
 
+    /* ⭐ L’image de fond REMPLIT la bulle */
     background-image: url('/jeux/style/images/fond_bulle_eldrin.jpg');
-    background-size: cover;
+    background-size: 100% 100%;   /* ⭐ Remplit la bulle parfaitement */
     background-repeat: no-repeat;
     background-position: center;
 
