@@ -502,17 +502,20 @@ textarea::-webkit-input-placeholder {
     width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
     height: auto;
     vertical-align: middle;
-
 }
 
 /* Boutons audio + restart */
 #eldrin-audio-btn,
 #eldrin-restart-btn {
     background: none;
-    border: 2px solid red;
+    border: 2px solid red;   /* pour tester */
     padding: 0;
-    cursor: pointer;      /* ⭐ montre que c’est cliquable */
+    cursor: pointer;         /* ⭐ montre que c’est cliquable */
     display: inline-block;
+
+    /* ⭐⭐ AJOUT ESSENTIEL ⭐⭐ */
+    position: relative;      /* active le z-index */
+    z-index: 9999;           /* passe au-dessus de la bulle */
 }
 
 /* Images dans les boutons audio + restart */
@@ -521,5 +524,5 @@ textarea::-webkit-input-placeholder {
     width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
     height: auto;
     pointer-events: none; 
-    border: 2px solid red;          
+    border: 2px solid red;          /* pour tester */
 }
