@@ -385,13 +385,18 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-        BULLE ELDRIN
+        BULLE ELDRIN (FIXE)
    ============================ */
 #eldrin-bubble {
     position: fixed;
     bottom: 20px;
+
+    /* ⭐ Position fixe à droite de Eldrin */
     left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
-    max-width: clamp(260px, 28vw, 380px);
+
+    /* ⭐ Taille FIXE pour empêcher toute déformation */
+    width: 380px;
+    height: 260px;
 
     background-image: url('/jeux/style/images/fond_bulle_eldrin.jpg');
     background-size: cover;
@@ -403,7 +408,7 @@ textarea::-webkit-input-placeholder {
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
 
     font-family: 'IM Fell English', serif;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: 16px;
     color: #2B1A01;
 
     display: none;
@@ -415,10 +420,26 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-   ⭐ BOUTONS AUDIO + RESTART (REGROUPÉS)
+        PAPIER FIXE DANS LA BULLE
    ============================ */
+.bubble-anchor {
+    position: relative;
+}
 
-/* Boutons */
+#eldrin-paper {
+    position: absolute;
+
+    /* ⭐ Position FIXE dans la bulle */
+    bottom: 20px;
+    left: 40px;
+
+    width: 120px;
+    pointer-events: none;
+}
+
+/* ============================
+   ⭐ BOUTONS AUDIO + RESTART
+   ============================ */
 #eldrin-audio-btn,
 #eldrin-restart-btn {
     background: none;
@@ -426,9 +447,11 @@ textarea::-webkit-input-placeholder {
     padding: 0;
     cursor: pointer;
     display: inline-block;
+
+    position: relative;
+    z-index: 9999;
 }
 
-/* Images des boutons */
 #eldrin-audio-btn img,
 #eldrin-restart-btn img {
     width: clamp(25px, 2vw, 35px);
@@ -478,63 +501,7 @@ textarea::-webkit-input-placeholder {
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
    ============================ */
 .intro-content img {
-    width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
+    width: clamp(25px, 2vw, 35px);
     height: auto;
     vertical-align: middle;
-}
-
-/* Boutons audio + restart */
-#eldrin-audio-btn,
-#eldrin-restart-btn {
-    background: none;
-    border: none;   /* pour tester */
-    padding: 0;
-    cursor: pointer;         /* ⭐ montre que c’est cliquable */
-    display: inline-block;
-
-    /* ⭐⭐ AJOUT ESSENTIEL ⭐⭐ */
-    position: relative;      /* active le z-index */
-    z-index: 9999;           /* passe au-dessus de la bulle */
-}
-
-/* Images dans les boutons audio + restart */
-#eldrin-audio-btn img,
-#eldrin-restart-btn img {
-    width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
-    height: auto;
-    pointer-events: none; 
-}
-#eldrin-bubble {
-    position: fixed;
-    bottom: 20px;
-    left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
-    max-width: clamp(260px, 28vw, 380px);
-    padding: 18px 22px;
-    border-radius: 14px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    z-index: 61;
-
-    display: none;
-
-    /* IMPORTANT : plus de background-image ici */
-}
-
-/* L’image de fond devient un vrai élément */
-.bubble-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* ou cover si tu veux */
-    border-radius: 14px;
-    z-index: -1; /* derrière le texte */
-}
-
-/* Le papier collé à un endroit précis de l’image */
-#eldrin-paper {
-    position: absolute;
-    bottom: 12%;   /* tu ajustes ici */
-    left: 18%;     /* tu ajustes ici */
-    width: 120px;
-    pointer-events: none;
 }
