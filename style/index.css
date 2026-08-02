@@ -526,13 +526,19 @@ textarea::-webkit-input-placeholder {
     pointer-events: none; 
 }
 
+/* ============================
+          Zone enigme 2
+   ============================ */
+
 #zone-enigme2 {
-    width: 300px;                 /* largeur du cadre */
-    height: 200px;                /* hauteur du cadre */
-    border: 3px solid red;        /* bordure rouge */
-    background-color: transparent; /* transparent */
-    position: absolute;           /* permet de placer où tu veux */
-    top: 200px;                   /* position verticale */
-    left: 100px;                  /* position horizontale */
-    cursor: pointer;              /* curseur main */
+    width: 300px;
+    height: 200px;
+    border: 3px solid red;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
 }
+
