@@ -504,29 +504,37 @@ textarea::-webkit-input-placeholder {
     height: auto;
     pointer-events: none; 
 }
-/* ============================
-   BULLE ELDIN + PAPIER FIXÉ
-   ============================ */
-
 #eldrin-bubble {
-    position: relative; /* La bulle devient le repère */
+    position: fixed;
+    bottom: 20px;
+    left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
+    max-width: clamp(260px, 28vw, 380px);
+    padding: 18px 22px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    z-index: 61;
+
+    display: none;
+
+    /* IMPORTANT : plus de background-image ici */
 }
 
-/* Conteneur du papier */
-.bubble-anchor {
+/* L’image de fond devient un vrai élément */
+.bubble-bg {
     position: absolute;
-    bottom: 0;              /* Collé au bas */
-    left: 50%;              /* Centré */
-    transform: translateX(-50%);
+    inset: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;   /* Le papier ne bloque pas les clics */
+    height: 100%;
+    object-fit: contain; /* ou cover si tu veux */
+    border-radius: 14px;
+    z-index: -1; /* derrière le texte */
 }
 
-/* Image du papier */
+/* Le papier collé à un endroit précis de l’image */
 #eldrin-paper {
-    width: 120px;           /* Ajuste la taille comme tu veux */
-    user-select: none;
+    position: absolute;
+    bottom: 12%;   /* tu ajustes ici */
+    left: 18%;     /* tu ajustes ici */
+    width: 120px;
     pointer-events: none;
 }
