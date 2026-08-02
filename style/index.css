@@ -437,27 +437,6 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-        PAPIER DANS LA BULLE
-   ============================ */
-.bubble-anchor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#eldrin-paper {
-    position: absolute;
-    top: 570px;
-    left: 160px;
-    width: 55px;
-    transform: rotate(90deg);
-    cursor: pointer;
-    z-index: 5;
-}
-
-/* ============================
         ZOOM PAPIER
    ============================ */
 #paper-zoom {
@@ -524,4 +503,30 @@ textarea::-webkit-input-placeholder {
     width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
     height: auto;
     pointer-events: none; 
+}
+/* ============================
+   BULLE ELDIN + PAPIER FIXÉ
+   ============================ */
+
+#eldrin-bubble {
+    position: relative; /* La bulle devient le repère */
+}
+
+/* Conteneur du papier */
+.bubble-anchor {
+    position: absolute;
+    bottom: 0;              /* Collé au bas */
+    left: 50%;              /* Centré */
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;   /* Le papier ne bloque pas les clics */
+}
+
+/* Image du papier */
+#eldrin-paper {
+    width: 120px;           /* Ajuste la taille comme tu veux */
+    user-select: none;
+    pointer-events: none;
 }
