@@ -548,10 +548,10 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-   ⭐ BOX ÉNIGME 2 — PORTE DU MAGE
+   Box code énigme 2 — PORTE DU MAGE
 ============================ */
 
-.enigme-box {
+.code-box {
     display: none;
     position: fixed;
     top: 0;
@@ -562,29 +562,27 @@ textarea::-webkit-input-placeholder {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px); /* effet mystique */
 }
 
-/* ⭐ Porte en bois ancien */
-.enigme-box-content {
+.code-content {
     background-image: url("style/images/porte_bois.jpg"); /* mets une image de porte ici */
     background-size: cover;
     background-position: center;
     padding: 50px 40px;
     width: 420px;
     height: 520px;
-    border: 6px solid #3a2a1a;
+    border: 6px solid #3a2a1a; /* bois ancien */
     border-radius: 12px;
-    box-shadow: 0 0 45px rgba(255, 200, 120, 0.9);
+    box-shadow: 0 0 45px rgba(255, 200, 120, 0.9); /* aura magique */
     text-align: center;
     position: relative;
-
-    /* Animation d’apparition comme si la porte s’ouvrait */
     animation: ouverturePorte 0.8s ease-out;
 }
 
-/* ⭐ Croix de fermeture */
-.enigme-box-close {
+/* Croix de fermeture */
+.code-content .close-parchment,
+.code-content .enigme-box-close {
     position: absolute;
     top: 12px;
     right: 18px;
@@ -594,8 +592,8 @@ textarea::-webkit-input-placeholder {
     text-shadow: 0 0 10px rgba(255, 220, 150, 1);
 }
 
-/* ⭐ Texte d’ambiance */
-.enigme-box-text {
+/* Texte d’ambiance */
+.code-content p {
     font-size: 18px;
     margin-bottom: 25px;
     color: #f5e4c3;
@@ -603,7 +601,7 @@ textarea::-webkit-input-placeholder {
     text-shadow: 0 0 8px rgba(255, 220, 150, 0.8);
 }
 
-/* ⭐ Champ de texte */
+/* Champ de texte */
 #enigme2-input {
     width: 90%;
     padding: 12px;
@@ -615,7 +613,7 @@ textarea::-webkit-input-placeholder {
     box-shadow: inset 0 0 12px rgba(255, 220, 150, 0.6);
 }
 
-/* ⭐ Bouton valider */
+/* Bouton valider */
 #enigme2-validate {
     padding: 12px 25px;
     background: linear-gradient(#8b5a2b, #a06b33);
@@ -634,8 +632,8 @@ textarea::-webkit-input-placeholder {
     box-shadow: 0 0 25px rgba(255, 240, 200, 1);
 }
 
-/* ⭐ Message d’erreur RP */
-.enigme-error {
+/* Message d’erreur RP */
+#enigme2-error {
     margin-top: 15px;
     color: #ffb3b3;
     font-weight: bold;
@@ -644,7 +642,7 @@ textarea::-webkit-input-placeholder {
     animation: erreurShake 0.4s ease;
 }
 
-/* ⭐ Animation apparition porte */
+/* Animation apparition porte */
 @keyframes ouverturePorte {
     0% {
         transform: scale(0.7) rotateX(25deg);
@@ -658,7 +656,7 @@ textarea::-webkit-input-placeholder {
     }
 }
 
-/* ⭐ Animation erreur */
+/* Animation erreur */
 @keyframes erreurShake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-6px); }
