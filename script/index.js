@@ -201,4 +201,12 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
     }
 });
 
-
+// ===============================
+// **⭐ FERMER LA BOX EN CLIQUANT À CÔTÉ**
+// ===============================
+document.querySelector(".code-box").addEventListener("click", function(e) {
+    // si on clique sur le fond sombre (overlay)
+    if (e.target.classList.contains("code-box")) {
+        document.getElementById("enigme2-box").style.display = "none";
+    }
+});
