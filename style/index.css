@@ -541,7 +541,7 @@ textarea::-webkit-input-placeholder {
     border: 3px solid red;
     background-color: transparent;
     position: absolute;
-    top: 200%;
+    top: 20%;
     left: 80%;
     transform: translate(-50%, -50%);
     cursor: pointer;
