@@ -566,7 +566,7 @@ textarea::-webkit-input-placeholder {
 }
 
 .code-content {
-    background-image: url("style/images/porte_bois.jpg"); /* mets une image de porte ici */
+    background-image: url("style/images/porte_maison_eldorin_fermee.jpg");
     background-size: cover;
     background-position: center;
     padding: 50px 40px;
