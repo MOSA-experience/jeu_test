@@ -180,7 +180,7 @@ paperContent.addEventListener('click', (e) => {
 });
 
 // ===============================
-// **⭐ ÉNIGME 2 : ouverture de la box**
+// **⭐ ÉNIGME 2 : ouverture de la grande box**
 // ===============================
 document.getElementById("zone-enigme2").addEventListener("click", function() {
     document.getElementById("enigme2-box").style.display = "flex";
@@ -188,10 +188,32 @@ document.getElementById("zone-enigme2").addEventListener("click", function() {
 
 // ===============================
 // ⭐⭐ BOÎTIER MAGIQUE : ouverture du boîtier zoomé ⭐⭐
-// ===============================
 document.getElementById("boitier-code").addEventListener("click", function(e) {
     e.stopPropagation();
     document.getElementById("boitier-zoom").style.display = "block";
+});
+
+// ===============================
+// ⭐⭐ FERMETURE PRIORITAIRE : petite box puis grande box ⭐⭐
+document.addEventListener("click", function(e) {
+
+    const bigBox = document.getElementById("enigme2-box");
+    const smallBox = document.getElementById("boitier-zoom");
+
+    // Si petite box ouverte → on la ferme en premier
+    if (smallBox.style.display === "block") {
+        if (!e.target.closest("#boitier-zoom") && e.target.id !== "boitier-code") {
+            smallBox.style.display = "none";
+            return; // IMPORTANT : on ne ferme PAS la grande box dans ce cas
+        }
+    }
+
+    // Si petite box fermée → on peut fermer la grande box
+    if (bigBox.style.display === "flex") {
+        if (!e.target.closest(".code-content") && e.target.id !== "zone-enigme2") {
+            bigBox.style.display = "none";
+        }
+    }
 });
 
 // ===============================
@@ -202,15 +224,12 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
 
     if (code === "velor") {
 
-        // ⭐ remplacer la porte fermée par la porte ouverte
         document.querySelector(".code-content").style.backgroundImage =
             'url("images/porte_maison_eldorin_ouverte.png")';
 
-        // ⭐ cacher les boîtiers
         document.getElementById("boitier-zoom").style.display = "none";
         document.getElementById("boitier-code").style.display = "none";
 
-        // ⭐ laisser la porte ouverte 1.5s avant de passer à la suite
         setTimeout(() => {
             window.location.href = "enigme2.html";
         }, 1500);
@@ -219,14 +238,4 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
         document.getElementById("enigme2-error").textContent =
             "Le mot de passe est incorrect.";
     }
-});
-
-// ===============================
-// **⭐ FERMER LE BOÎTIER ZOOMÉ EN CLIQUANT À CÔTÉ**
-// ===============================
-document.addEventListener("click", function(e) {
-    if (e.target.id === "boitier-zoom") return;
-    if (e.target.closest("#boitier-zoom")) return;
-
-    document.getElementById("boitier-zoom").style.display = "none";
 });
