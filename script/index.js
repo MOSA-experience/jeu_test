@@ -193,8 +193,10 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
     const code = document.getElementById("enigme2-input").value.trim();
 
     if (code === "1234") { 
-        window.location.href = "enigme3.html";
+        window.location.href = "enigme2.html";
     } else {
-        document.getElementById("enigme2-error").textContent = "Code incorrect.";
+        document.getElementById("enigme2-error").textContent =
+            "Le mot de passe est incorrect. Les enchantements d'Eldorin bloquent toujours l'accès. Ils ne se désactiveront que si vous prononcez le bon mot de passe.";
     }
 });
+
