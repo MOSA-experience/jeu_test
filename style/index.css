@@ -548,68 +548,121 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-   Box code énigme 2
+   ⭐ BOX ÉNIGME 2 — PORTE DU MAGE
 ============================ */
 
-.code-box {
-    display: none; /* cachée au début */
+.enigme-box {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(5, 0, 0, 0.75); /* ambiance sombre */
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
 }
 
-.code-content {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
+/* ⭐ Porte en bois ancien */
+.enigme-box-content {
+    background-image: url("style/images/porte_bois.jpg"); /* mets une image de porte ici */
+    background-size: cover;
+    background-position: center;
+    padding: 50px 40px;
+    width: 420px;
+    height: 520px;
+    border: 6px solid #3a2a1a;
+    border-radius: 12px;
+    box-shadow: 0 0 45px rgba(255, 200, 120, 0.9);
     text-align: center;
-    width: 300px;
+    position: relative;
+
+    /* Animation d’apparition comme si la porte s’ouvrait */
+    animation: ouverturePorte 0.8s ease-out;
 }
 
+/* ⭐ Croix de fermeture */
+.enigme-box-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #f5d7a1;
+    text-shadow: 0 0 10px rgba(255, 220, 150, 1);
+}
+
+/* ⭐ Texte d’ambiance */
+.enigme-box-text {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #f5e4c3;
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(255, 220, 150, 0.8);
+}
+
+/* ⭐ Champ de texte */
 #enigme2-input {
     width: 90%;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 12px;
+    border: 3px solid #6b4a2b;
+    border-radius: 6px;
+    background: rgba(255, 240, 200, 0.9);
+    margin-bottom: 20px;
+    font-size: 17px;
+    box-shadow: inset 0 0 12px rgba(255, 220, 150, 0.6);
 }
 
-#enigme2-error {
-    margin-top: 10px;
-    color: red;
+/* ⭐ Bouton valider */
+#enigme2-validate {
+    padding: 12px 25px;
+    background: linear-gradient(#8b5a2b, #a06b33);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
     font-weight: bold;
+    box-shadow: 0 0 15px rgba(255, 220, 150, 0.9);
+    transition: 0.2s;
 }
 
-/* ⭐ Animation d'apparition magique */
-.enigme-box-content {
-    animation: apparitionMagique 0.6s ease-out;
+#enigme2-validate:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 240, 200, 1);
 }
 
-@keyframes apparitionMagique {
+/* ⭐ Message d’erreur RP */
+.enigme-error {
+    margin-top: 15px;
+    color: #ffb3b3;
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 0 0 10px rgba(255, 100, 100, 0.8);
+    animation: erreurShake 0.4s ease;
+}
+
+/* ⭐ Animation apparition porte */
+@keyframes ouverturePorte {
     0% {
-        transform: scale(0.6);
+        transform: scale(0.7) rotateX(25deg);
         opacity: 0;
-        box-shadow: 0 0 0px rgba(255, 215, 130, 0);
+        box-shadow: 0 0 0 rgba(255, 200, 120, 0);
     }
     100% {
-        transform: scale(1);
+        transform: scale(1) rotateX(0deg);
         opacity: 1;
-        box-shadow: 0 0 25px rgba(255, 215, 130, 0.7);
+        box-shadow: 0 0 45px rgba(255, 200, 120, 0.9);
     }
 }
 
 /* ⭐ Animation erreur */
-.enigme-error {
-    animation: erreurShake 0.4s ease;
-}
-
 @keyframes erreurShake {
     0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-6px); }
     100% { transform: translateX(0); }
 }
