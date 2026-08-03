@@ -1,12 +1,12 @@
 // ===============================
-// FERMETURE DU PARCHEMIN (croix)
+// **FERMETURE DU PARCHEMIN (croix)**
 // ===============================
 document.querySelector('.close-parchment').onclick = () => {
     document.querySelector('#intro-overlay').style.display = 'none';
 };
 
 // ===============================
-// FERMETURE EN CLIQUANT À CÔTÉ
+// **FERMETURE EN CLIQUANT À CÔTÉ**
 // ===============================
 const overlay = document.getElementById('intro-overlay');
 
@@ -16,7 +16,7 @@ overlay.addEventListener('click', function (e) {
 });
 
 // ===============================
-// BOUTON ✦
+// **BOUTON ✦**
 // ===============================
 function toggleIntro() {
     overlay.style.display =
@@ -24,7 +24,7 @@ function toggleIntro() {
 }
 
 // ===============================
-// NAVIGATION PARCHEMIN
+// **NAVIGATION PARCHEMIN**
 // ===============================
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
@@ -40,7 +40,7 @@ function showPage1() {
 }
 
 // ===============================
-// DRAG IMAGE
+// **DRAG IMAGE**
 // ===============================
 const imgScroll = document.querySelector('.image-scroll');
 let isDragging = false;
@@ -77,7 +77,7 @@ imgScroll.addEventListener('mousemove', (e) => {
 imgScroll.style.cursor = "grab";
 
 // ===============================
-// INDICE
+// **INDICE**
 // ===============================
 const hintOverlay = document.getElementById('hint-overlay');
 
@@ -96,7 +96,7 @@ hintOverlay.addEventListener('click', function (e) {
 });
 
 // ===============================
-// ⭐ ZONE 1 = afficher Eldrin + bulle
+// **⭐ ZONE 1 = afficher Eldrin + bulle**
 // ===============================
 const zone1 = document.querySelector('.zone-enigme1');
 const eldrinImg = document.getElementById('eldrin-img');
@@ -114,7 +114,7 @@ zone1.addEventListener('click', (e) => {
 });
 
 // ===============================
-// ⭐ CACHER TOUT QUAND ON CLIQUE AILLEURS
+// **⭐ CACHER TOUT QUAND ON CLIQUE AILLEURS**
 // ===============================
 document.addEventListener('click', (e) => {
 
@@ -132,7 +132,7 @@ document.addEventListener('click', (e) => {
 });
 
 // ===============================
-// ⭐ AUDIO : lecture / pause
+// **⭐ AUDIO : lecture / pause**
 // ===============================
 const audio = document.getElementById('eldrin-audio');
 const audioBtn = document.getElementById('eldrin-audio-btn');
@@ -148,7 +148,7 @@ audioBtn.addEventListener('click', (e) => {
 });
 
 // ===============================
-// ⭐ AUDIO : recommencer depuis le début
+// **⭐ AUDIO : recommencer depuis le début**
 // ===============================
 const restartBtn = document.getElementById('eldrin-restart-btn');
 
@@ -159,7 +159,7 @@ restartBtn.addEventListener('click', (e) => {
 });
 
 // ===============================
-// ⭐ Papier : zoom direct + fermeture en cliquant autour
+// **⭐ Papier : zoom direct + fermeture en cliquant autour**
 // ===============================
 const paperZoom = document.getElementById('paper-zoom');
 const paperContent = document.getElementById('paper-content');
@@ -179,6 +179,22 @@ paperContent.addEventListener('click', (e) => {
     e.stopPropagation();
 });
 
+// ===============================
+// **⭐ ÉNIGME 2 : ouverture de la box**
+// ===============================
 document.getElementById("zone-enigme2").addEventListener("click", function() {
-    window.location.href = "enigme2.html";
+    document.getElementById("enigme2-box").style.display = "flex";
+});
+
+// ===============================
+// **⭐ ÉNIGME 2 : vérification du code**
+// ===============================
+document.getElementById("enigme2-validate").addEventListener("click", function() {
+    const code = document.getElementById("enigme2-input").value.trim();
+
+    if (code === "1234") { 
+        window.location.href = "enigme3.html";
+    } else {
+        document.getElementById("enigme2-error").textContent = "Code incorrect.";
+    }
 });
