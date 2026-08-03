@@ -187,6 +187,14 @@ document.getElementById("zone-enigme2").addEventListener("click", function() {
 });
 
 // ===============================
+// ⭐⭐ BOÎTIER MAGIQUE : ouverture interface code ⭐⭐
+// ===============================
+document.getElementById("boitier-code").addEventListener("click", function(e) {
+    e.stopPropagation();
+    document.getElementById("code-interface").style.display = "block";
+});
+
+// ===============================
 // **⭐ ÉNIGME 2 : vérification du code + porte ouverte**
 // ===============================
 document.getElementById("enigme2-validate").addEventListener("click", function() {
@@ -196,12 +204,11 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
 
         // ⭐ remplacer la porte fermée par la porte ouverte
         document.querySelector(".code-content").style.backgroundImage =
-            'url("../style/images/porte_maison_eldorin_ouverte.jpg")';
+            'url("images/porte_maison_eldorin_ouverte.png")';
 
-        // ⭐ cacher les éléments du code
-        document.getElementById("enigme2-input").style.display = "none";
-        document.getElementById("enigme2-validate").style.display = "none";
-        document.getElementById("enigme2-error").style.display = "none";
+        // ⭐ cacher les éléments du code + boîtier
+        document.getElementById("code-interface").style.display = "none";
+        document.getElementById("boitier-code").style.display = "none";
 
         // ⭐ laisser la porte ouverte 1.5s avant de passer à la suite
         setTimeout(() => {
@@ -210,7 +217,7 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
 
     } else {
         document.getElementById("enigme2-error").textContent =
-            "Le mot de passe est incorrect. Les enchantements d'Eldorin bloquent toujours l'accès. Ils ne se désactiveront que si vous prononcez le bon mot de passe.";
+            "Le mot de passe est incorrect. Les enchantements d'Eldorin bloquent toujours l'accès.";
     }
 });
 
@@ -220,5 +227,6 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
 document.querySelector(".code-box").addEventListener("click", function(e) {
     if (e.target.classList.contains("code-box")) {
         document.getElementById("enigme2-box").style.display = "none";
+        document.getElementById("code-interface").style.display = "none"; // reset
     }
 });
