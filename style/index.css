@@ -580,18 +580,6 @@ textarea::-webkit-input-placeholder {
     animation: ouverturePorte 0.8s ease-out;
 }
 
-/* Croix de fermeture */
-.code-content .close-parchment,
-.code-content .enigme-box-close {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    font-size: 26px;
-    cursor: pointer;
-    color: #f5d7a1;
-    text-shadow: 0 0 10px rgba(255, 220, 150, 1);
-}
-
 /* Texte d’ambiance */
 .code-content p {
     font-size: 18px;
