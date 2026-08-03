@@ -187,14 +187,27 @@ document.getElementById("zone-enigme2").addEventListener("click", function() {
 });
 
 // ===============================
-// **⭐ ÉNIGME 2 : vérification du code**
+// **⭐ ÉNIGME 2 : vérification du code + porte ouverte**
 // ===============================
 document.getElementById("enigme2-validate").addEventListener("click", function() {
-    const code = document.getElementById("enigme2-input").value.trim().toLowerCase(); 
-    // 👆 transforme ce que le joueur écrit en minuscules
+    const code = document.getElementById("enigme2-input").value.trim().toLowerCase();
 
-    if (code === "velor") {  // 🔐 ton mot de passe en minuscules ici
-        window.location.href = "enigme2.html";
+    if (code === "velor") {
+
+        // ⭐ remplacer la porte fermée par la porte ouverte
+        document.querySelector(".code-content").style.backgroundImage =
+            'url("style/images/porte_maison_eldorin_ouverte.jpg")';
+
+        // ⭐ cacher les éléments du code
+        document.getElementById("enigme2-input").style.display = "none";
+        document.getElementById("enigme2-validate").style.display = "none";
+        document.getElementById("enigme2-error").style.display = "none";
+
+        // ⭐ laisser la porte ouverte 1.5s avant de passer à la suite
+        setTimeout(() => {
+            window.location.href = "enigme2.html";
+        }, 1500);
+
     } else {
         document.getElementById("enigme2-error").textContent =
             "Le mot de passe est incorrect. Les enchantements d'Eldorin bloquent toujours l'accès. Ils ne se désactiveront que si vous prononcez le bon mot de passe.";
@@ -205,7 +218,6 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
 // **⭐ FERMER LA BOX EN CLIQUANT À CÔTÉ**
 // ===============================
 document.querySelector(".code-box").addEventListener("click", function(e) {
-    // si on clique sur le fond sombre (overlay)
     if (e.target.classList.contains("code-box")) {
         document.getElementById("enigme2-box").style.display = "none";
     }
