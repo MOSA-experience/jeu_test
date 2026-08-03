@@ -187,11 +187,11 @@ document.getElementById("zone-enigme2").addEventListener("click", function() {
 });
 
 // ===============================
-// ⭐⭐ BOÎTIER MAGIQUE : ouverture interface code ⭐⭐
+// ⭐⭐ BOÎTIER MAGIQUE : ouverture du boîtier zoomé ⭐⭐
 // ===============================
 document.getElementById("boitier-code").addEventListener("click", function(e) {
     e.stopPropagation();
-    document.getElementById("code-interface").style.display = "block";
+    document.getElementById("boitier-zoom").style.display = "block";
 });
 
 // ===============================
@@ -206,8 +206,8 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
         document.querySelector(".code-content").style.backgroundImage =
             'url("images/porte_maison_eldorin_ouverte.png")';
 
-        // ⭐ cacher les éléments du code + boîtier
-        document.getElementById("code-interface").style.display = "none";
+        // ⭐ cacher les boîtiers
+        document.getElementById("boitier-zoom").style.display = "none";
         document.getElementById("boitier-code").style.display = "none";
 
         // ⭐ laisser la porte ouverte 1.5s avant de passer à la suite
@@ -217,16 +217,16 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
 
     } else {
         document.getElementById("enigme2-error").textContent =
-            "Le mot de passe est incorrect. Les enchantements d'Eldorin bloquent toujours l'accès.";
+            "Le mot de passe est incorrect.";
     }
 });
 
 // ===============================
-// **⭐ FERMER LA BOX EN CLIQUANT À CÔTÉ**
+// **⭐ FERMER LE BOÎTIER ZOOMÉ EN CLIQUANT À CÔTÉ**
 // ===============================
-document.querySelector(".code-box").addEventListener("click", function(e) {
-    if (e.target.classList.contains("code-box")) {
-        document.getElementById("enigme2-box").style.display = "none";
-        document.getElementById("code-interface").style.display = "none"; // reset
-    }
+document.addEventListener("click", function(e) {
+    if (e.target.id === "boitier-zoom") return;
+    if (e.target.closest("#boitier-zoom")) return;
+
+    document.getElementById("boitier-zoom").style.display = "none";
 });
