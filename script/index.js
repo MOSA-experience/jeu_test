@@ -196,7 +196,7 @@ document.getElementById("enigme2-validate").addEventListener("click", function()
 
         // ⭐ remplacer la porte fermée par la porte ouverte
         document.querySelector(".code-content").style.backgroundImage =
-            'url("style/images/porte_maison_eldorin_ouverte.jpg")';
+            'url("../style/images/porte_maison_eldorin_ouverte.jpg")';
 
         // ⭐ cacher les éléments du code
         document.getElementById("enigme2-input").style.display = "none";
