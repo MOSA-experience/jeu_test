@@ -537,12 +537,12 @@ textarea::-webkit-input-placeholder {
 
 #zone-enigme2 {
     width: 200px;
-    height: 250px;
+    height: 300px;
     border: 3px solid red;
     background-color: transparent;
     position: absolute;
-    top: 30%;
-    left: 70%;
+    top: 200%;
+    left: 80%;
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
