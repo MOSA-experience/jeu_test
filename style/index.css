@@ -558,11 +558,11 @@ textarea::-webkit-input-placeholder {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 0, 0, 0.75); /* ambiance sombre */
+    background: rgba(5, 0, 0, 0.75);
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    backdrop-filter: blur(4px); /* effet mystique */
+    backdrop-filter: blur(4px);
 }
 
 .code-content {
@@ -572,21 +572,19 @@ textarea::-webkit-input-placeholder {
     padding: 50px 40px;
     width: 420px;
     height: 520px;
-    border: 6px solid #3a2a1a; /* bois ancien */
+    border: 6px solid #3a2a1a;
     border-radius: 12px;
-    box-shadow: 0 0 45px rgba(255, 200, 120, 0.9); /* aura magique */
+    box-shadow: 0 0 45px rgba(255, 200, 120, 0.9);
     text-align: center;
     position: relative;
-    animation: ouverturePorte 0.8s ease-out;
 }
 
-/* ⭐⭐⭐ BOÎTIER MÉDIÉVAL ⭐⭐⭐ */
+/* ⭐⭐⭐ BOÎTIER MÉDIÉVAL (petit) ⭐⭐⭐ */
 #boitier-code {
     position: absolute;
     width: 90px;
     height: 120px;
 
-    /* Position à ajuster selon ta porte */
     top: 60%;
     left: 65%;
 
@@ -594,7 +592,7 @@ textarea::-webkit-input-placeholder {
     background-size: cover;
     background-position: center;
 
-    border: 4px solid #4a2f1a; /* bois foncé */
+    border: 4px solid #4a2f1a;
     border-radius: 10px;
 
     box-shadow:
@@ -602,66 +600,24 @@ textarea::-webkit-input-placeholder {
         inset 0 0 8px rgba(0, 120, 255, 0.3);
 
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
-/* ⭐⭐⭐ TEXTE GRAVÉ MÉDIÉVAL (remplace les runes) ⭐⭐⭐ */
-#boitier-code::before {
-    content: "Entrez le mot de passe pour désactiver l’enchantement d’Eldorin.";
-    position: absolute;
-    top: -45px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-
-    font-size: 13px;
-    font-family: "Cinzel", serif;
-    color: rgba(255, 240, 200, 0.85);
-
-    text-align: center;
-
-    /* Effet gravure */
-    text-shadow:
-        0 0 3px rgba(0, 0, 0, 0.7),
-        0 0 8px rgba(255, 220, 150, 0.6);
-}
-
-/* Petite gemme magique */
-#boitier-code::after {
-    content: "";
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 18px;
-    height: 18px;
-    background: radial-gradient(circle, #7cc7ff, #004b7a);
-    border-radius: 50%;
-    box-shadow: 0 0 12px #7cc7ff;
-}
-
-/* Hover */
 #boitier-code:hover {
     transform: scale(1.12);
-    box-shadow:
-        0 0 18px rgba(0, 120, 255, 0.7),
-        inset 0 0 12px rgba(0, 120, 255, 0.5);
 }
 
-/* ⭐⭐⭐ BOÎTIER AGRANDI (zoom au centre) ⭐⭐⭐ */
+/* ⭐⭐⭐ BOÎTIER AGRANDI ⭐⭐⭐ */
 #boitier-zoom {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%);
     width: 350px;
     height: 420px;
 
-    background: linear-gradient(135deg, #3a2a1a 0%, #4a3322 25%, #3a2a1a 50%, #4a3322 75%, #3a2a1a 100%);
-    background-size: 200% 200%;
-    animation: boisAnim 6s ease infinite;
-
+    background: #1a1a1a;
     border: 6px solid #4a2f1a;
     border-radius: 12px;
 
@@ -671,30 +627,21 @@ textarea::-webkit-input-placeholder {
 
     z-index: 99999;
 
-    /* ⭐ Tout centrer */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-/* Animation texture bois */
-@keyframes boisAnim {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Champ de code dans le boîtier zoomé */
+/* ⭐ Champ noir centré */
 #boitier-zoom input {
     width: 80%;
     padding: 12px;
-    margin-top: 40px;
     border: 3px solid #4a2f1a;
     border-radius: 6px;
-    background: rgba(255, 240, 200, 0.9);
+    background: black;
+    color: white;
     font-size: 18px;
-    box-shadow: inset 0 0 12px rgba(120, 180, 255, 0.6);
     text-align: center;
 }
 
@@ -708,46 +655,4 @@ textarea::-webkit-input-placeholder {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
-    box-shadow: 0 0 15px rgba(120, 180, 255, 0.9);
-    transition: 0.2s;
-}
-
-#boitier-zoom button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px rgba(180, 220, 255, 1);
-}
-
-/* Animation du zoom */
-@keyframes zoomBoitier {
-    0% {
-        transform: translate(-50%, -50%) scale(0.4);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-}
-
-/* Animation apparition porte */
-@keyframes ouverturePorte {
-    0% {
-        transform: scale(0.7) rotateX(25deg);
-        opacity: 0;
-        box-shadow: 0 0 0 rgba(255, 200, 120, 0);
-    }
-    100% {
-        transform: scale(1) rotateX(0deg);
-        opacity: 1;
-        box-shadow: 0 0 45px rgba(255, 200, 120, 0.9);
-    }
-}
-
-/* Animation erreur */
-@keyframes erreurShake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    50% { transform: translateX(6px); }
-    75% { transform: translateX(-6px); }
-    100% { transform: translateX(0); }
 }
