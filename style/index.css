@@ -461,7 +461,7 @@ textarea::-webkit-input-placeholder {
     position: absolute;
 
     /* ⭐ Même position visuelle, mais par rapport au BAS */
-    bottom: 10px;   /* équivalent à ton ancien top: 550px */
+    bottom: 2px;   /* équivalent à ton ancien top: 550px */
     left: 160px;    /* on garde exactement ta valeur */
 
     /* ⭐ Taille proportionnelle */
