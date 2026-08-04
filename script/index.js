@@ -101,11 +101,15 @@ hintOverlay.addEventListener('click', function (e) {
 const zone1 = document.querySelector('.zone-enigme1');
 const eldrinImg = document.getElementById('eldrin-img');
 const eldrinBubble = document.getElementById('eldrin-bubble');
+const eldrinPaper = document.getElementById('eldrin-paper');
 
 function toggleEldrin() {
     const isHidden = eldrinImg.style.display === "none";
     eldrinImg.style.display = isHidden ? "block" : "none";
     eldrinBubble.style.display = isHidden ? "block" : "none";
+
+    // ⭐ Afficher / cacher le papier selon la bulle
+    eldrinPaper.style.display = isHidden ? "block" : "none";
 }
 
 zone1.addEventListener('click', (e) => {
@@ -129,6 +133,7 @@ document.addEventListener('click', (e) => {
 
     eldrinImg.style.display = "none";
     eldrinBubble.style.display = "none";
+    eldrinPaper.style.display = "none"; // ⭐ cacher le papier aussi
 });
 
 // ===============================
@@ -159,22 +164,36 @@ restartBtn.addEventListener('click', (e) => {
 });
 
 // ===============================
-// **⭐ Papier : zoom direct + fermeture en cliquant autour**
+// ⭐⭐ PAPIER : zoom comme le boîtier ⭐⭐
 // ===============================
 const paperZoom = document.getElementById('paper-zoom');
 const paperContent = document.getElementById('paper-content');
 
-document.getElementById('eldrin-paper').addEventListener('click', (e) => {
+// Ouvrir le zoom
+eldrinPaper.addEventListener('click', (e) => {
     e.stopPropagation();
     paperZoom.style.display = "flex";
 });
 
-paperZoom.addEventListener('click', () => {
-    paperZoom.style.display = "none";
-});
+// Fermeture prioritaire : zoom → bulle
+document.addEventListener("click", function(e) {
 
-paperContent.addEventListener('click', (e) => {
-    e.stopPropagation();
+    // ⭐ Si zoom ouvert → fermer d'abord
+    if (paperZoom.style.display === "flex") {
+        if (!e.target.closest("#paper-content") && e.target.id !== "eldrin-paper") {
+            paperZoom.style.display = "none";
+            return; // ⭐ ne pas fermer la bulle ici
+        }
+    }
+
+    // ⭐ Si zoom fermé → fermer la bulle
+    if (eldrinBubble.style.display === "block") {
+        if (!e.target.closest("#eldrin-bubble") && e.target.id !== "eldrin-img") {
+            eldrinBubble.style.display = "none";
+            eldrinImg.style.display = "none";
+            eldrinPaper.style.display = "none";
+        }
+    }
 });
 
 // ===============================
