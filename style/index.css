@@ -597,8 +597,8 @@ textarea::-webkit-input-placeholder {
     width: 22px;
     height: 30px;
 
-    top: 50%;
-    left: 30%;
+    top: 48%;
+    left: 35%;
 
     background: url("images/fond_bois_code_enigme2.jpg");
     background-size: cover;
