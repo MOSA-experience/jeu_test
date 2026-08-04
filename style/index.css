@@ -609,7 +609,7 @@ textarea::-webkit-input-placeholder {
 
 /* ⭐⭐⭐ BOÎTIER AGRANDI ⭐⭐⭐ */
 #boitier-zoom {
-    display: none;
+    display: none !important; /* ⭐ Correction : empêche l'apparition au chargement */
     position: fixed;
     top: 50%;
     left: 50%;
@@ -627,7 +627,6 @@ textarea::-webkit-input-placeholder {
 
     z-index: 99999;
 
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
