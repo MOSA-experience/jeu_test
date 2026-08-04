@@ -133,7 +133,7 @@ document.addEventListener('click', (e) => {
 
     eldrinImg.style.display = "none";
     eldrinBubble.style.display = "none";
-    eldrinPaper.style.display = "none"; // ⭐ cacher le papier aussi
+    eldrinPaper.style.display = "none";
 });
 
 // ===============================
@@ -165,7 +165,6 @@ restartBtn.addEventListener('click', (e) => {
 
 // ===============================
 // ⭐⭐ PAPIER : zoom comme le boîtier ⭐⭐
-// ===============================
 const paperZoom = document.getElementById('paper-zoom');
 const paperContent = document.getElementById('paper-content');
 
@@ -178,15 +177,13 @@ eldrinPaper.addEventListener('click', (e) => {
 // Fermeture prioritaire : zoom → bulle
 document.addEventListener("click", function(e) {
 
-    // ⭐ Si zoom ouvert → fermer d'abord
     if (paperZoom.style.display === "flex") {
         if (!e.target.closest("#paper-content") && e.target.id !== "eldrin-paper") {
             paperZoom.style.display = "none";
-            return; // ⭐ ne pas fermer la bulle ici
+            return;
         }
     }
 
-    // ⭐ Si zoom fermé → fermer la bulle
     if (eldrinBubble.style.display === "block") {
         if (!e.target.closest("#eldrin-bubble") && e.target.id !== "eldrin-img") {
             eldrinBubble.style.display = "none";
@@ -211,23 +208,27 @@ document.getElementById("boitier-code").addEventListener("click", function(e) {
 });
 
 // ===============================
-// ⭐⭐ FERMETURE PRIORITAIRE : petite box puis grande box ⭐⭐
+// ⭐⭐ FERMETURE PRIORITAIRE : boîtier zoomé puis grande box ⭐⭐
 document.addEventListener("click", function(e) {
 
     const bigBox = document.getElementById("enigme2-box");
-    const smallBox = document.getElementById("boitier-zoom");
+    const zoomBox = document.getElementById("boitier-zoom");
 
-    // Si petite box ouverte → on la ferme
-    if (smallBox.style.display === "flex") {
-        if (!e.target.closest("#boitier-zoom") && e.target.id !== "boitier-code") {
-            smallBox.style.display = "none";
+    // ⭐ Si boîtier zoomé ouvert → fermer si clic à côté
+    if (zoomBox.style.display === "flex") {
+        if (!e.target.closest("#boitier-zoom") &&
+            !e.target.closest("#boitier-code")) {
+
+            zoomBox.style.display = "none";
             return;
         }
     }
 
-    // Si petite box fermée → on peut fermer la grande box
+    // ⭐ Si boîtier zoomé fermé → fermer la grande box
     if (bigBox.style.display === "flex") {
-        if (!e.target.closest(".code-content") && e.target.id !== "zone-enigme2") {
+        if (!e.target.closest(".code-content") &&
+            e.target.id !== "zone-enigme2") {
+
             bigBox.style.display = "none";
         }
     }
