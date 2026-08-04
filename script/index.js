@@ -164,17 +164,22 @@ restartBtn.addEventListener('click', (e) => {
 });
 
 // ===============================
-// ⭐⭐ PAPIER : zoom comme le boîtier ⭐⭐
+// ⭐⭐ PAPIER : zoom + copie du texte ⭐⭐
 const paperZoom = document.getElementById('paper-zoom');
 const paperContent = document.getElementById('paper-content');
+const paperTextZoom = document.getElementById('paper-text');
 
-// Ouvrir le zoom
+// ⭐ Ouvrir le zoom + copier le texte du petit papier
 eldrinPaper.addEventListener('click', (e) => {
     e.stopPropagation();
+
+    const smallText = document.querySelector('.paper-small-text').innerHTML;
+    paperTextZoom.innerHTML = smallText;
+
     paperZoom.style.display = "flex";
 });
 
-// Fermeture prioritaire : zoom → bulle
+// ⭐ Fermeture prioritaire : zoom → bulle
 document.addEventListener("click", function(e) {
 
     if (paperZoom.style.display === "flex") {
@@ -214,7 +219,6 @@ document.addEventListener("click", function(e) {
     const bigBox = document.getElementById("enigme2-box");
     const zoomBox = document.getElementById("boitier-zoom");
 
-    // ⭐ Si boîtier zoomé ouvert → fermer si clic à côté
     if (zoomBox.style.display === "flex") {
         if (!e.target.closest("#boitier-zoom") &&
             !e.target.closest("#boitier-code")) {
@@ -224,7 +228,6 @@ document.addEventListener("click", function(e) {
         }
     }
 
-    // ⭐ Si boîtier zoomé fermé → fermer la grande box
     if (bigBox.style.display === "flex") {
         if (!e.target.closest(".code-content") &&
             e.target.id !== "zone-enigme2") {
