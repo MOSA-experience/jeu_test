@@ -450,34 +450,17 @@ textarea::-webkit-input-placeholder {
 #eldrin-paper {
     position: absolute;
 
-    /* ⭐ TA POSITION ORIGINALE — JE NE TOUCHE PAS */
+    /* ⭐ Position relative à la bulle */
     top: 570px;
     left: 160px;
 
-    /* ⭐ Taille proportionnelle (tu l'avais déjà) */
-    width: 12%;
-
-    /* ⭐ Le papier est maintenant un DIV → on lui remet l'apparence d'un papier */
-    background-image: url('style/images/papier.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    /* ⭐ Pour que le texte soit bien placé */
-    padding: 8px;
+    /* ⭐ Taille proportionnelle */
+    width: 12%;    /* 12% de la largeur de la bulle */
 
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
     display: none;
-}
-
-/* ⭐ Texte sur le petit papier */
-.paper-small-text {
-    font-family: 'IM Fell English', serif;
-    font-size: 0.55vw; /* petit texte responsive */
-    color: #2B1A01;
-    text-align: center;
-    line-height: 1.2;
 }
 
 
@@ -493,6 +476,7 @@ textarea::-webkit-input-placeholder {
     height: 100%;
     background: rgba(0,0,0,0.7);
 
+    /* ⭐ Zoom caché par défaut */
     display: none;
 
     justify-content: center;
@@ -501,14 +485,11 @@ textarea::-webkit-input-placeholder {
 }
 
 #paper-content {
-    background-image: url('style/images/papier.jpg');
+    background-image: url('/jeux/style/images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-
-    /* ⭐ Zoom un peu plus petit comme tu voulais */
-    width: 55vw;
-    height: 65vh;
-
+    width: 60vw;
+    height: 70vh;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 0 20px black;
@@ -519,15 +500,12 @@ textarea::-webkit-input-placeholder {
     align-items: center;
 }
 
-/* ⭐ Texte du papier zoomé (plus petit) */
 #paper-text {
     font-family: 'IM Fell English', serif;
-    font-size: clamp(18px, 2.5vw, 28px);
+    font-size: clamp(22px, 3vw, 32px);
     color: #2B1A01;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-    line-height: 1.4;
 }
-
 
 /* ============================
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
