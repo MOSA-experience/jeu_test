@@ -169,12 +169,10 @@ document.getElementById('eldrin-paper').addEventListener('click', (e) => {
     paperZoom.style.display = "flex";
 });
 
-// Fermer en cliquant autour
 paperZoom.addEventListener('click', () => {
     paperZoom.style.display = "none";
 });
 
-// Empêcher la fermeture quand on clique sur le contenu
 paperContent.addEventListener('click', (e) => {
     e.stopPropagation();
 });
@@ -190,7 +188,7 @@ document.getElementById("zone-enigme2").addEventListener("click", function() {
 // ⭐⭐ BOÎTIER MAGIQUE : ouverture du boîtier zoomé ⭐⭐
 document.getElementById("boitier-code").addEventListener("click", function(e) {
     e.stopPropagation();
-    document.getElementById("boitier-zoom").style.display = "block";
+    document.getElementById("boitier-zoom").style.display = "flex";
 });
 
 // ===============================
@@ -200,11 +198,11 @@ document.addEventListener("click", function(e) {
     const bigBox = document.getElementById("enigme2-box");
     const smallBox = document.getElementById("boitier-zoom");
 
-    // Si petite box ouverte → on la ferme en premier
-    if (smallBox.style.display === "block") {
+    // Si petite box ouverte → on la ferme
+    if (smallBox.style.display === "flex") {
         if (!e.target.closest("#boitier-zoom") && e.target.id !== "boitier-code") {
             smallBox.style.display = "none";
-            return; // IMPORTANT : on ne ferme PAS la grande box dans ce cas
+            return;
         }
     }
 
