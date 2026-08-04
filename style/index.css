@@ -452,7 +452,7 @@ textarea::-webkit-input-placeholder {
 
     /* ⭐ Position relative à la bulle */
     top: 80%;      /* 80% de la hauteur de la bulle */
-    left: 20%;     /* 20% de la largeur de la bulle */
+    left: 40%;     /* 40% de la largeur de la bulle */
 
     /* ⭐ Taille proportionnelle */
     width: 12%;    /* 12% de la largeur de la bulle */
