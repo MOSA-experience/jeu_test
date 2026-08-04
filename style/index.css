@@ -449,16 +449,16 @@ textarea::-webkit-input-placeholder {
 
 #eldrin-paper {
     position: absolute;
-    top: 570px;
-    left: 160px;
+    bottom: 10px;   /* distance depuis le bas de la bulle */
+    right: 20px;    /* distance depuis le bord droit de la bulle */
+
     width: 55px;
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
-
-    /* ⭐ Le papier doit être caché par défaut */
     display: none;
 }
+
 
 /* ============================
         ZOOM PAPIER
