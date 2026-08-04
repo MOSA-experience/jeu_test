@@ -451,7 +451,7 @@ textarea::-webkit-input-placeholder {
     position: absolute;
 
     /* ⭐ Position relative à la bulle */
-    bottom: 10%;      /* 85% de la hauteur de la bulle */
+    bottom: 10%;      /* 10% de la hauteur de la bulle */
     left: 40%;     /* 40% de la largeur de la bulle */
 
     /* ⭐ Taille proportionnelle */
