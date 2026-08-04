@@ -584,7 +584,7 @@ textarea::-webkit-input-placeholder {
     padding: 50px 40px;
     width: 420px;
     height: 520px;
-    border: 2px solid #3a2a1a;
+    border: 1px solid #3a2a1a;
     border-radius: 12px;
     box-shadow: 0 0 45px rgba(255, 200, 120, 0.9);
     text-align: center;
