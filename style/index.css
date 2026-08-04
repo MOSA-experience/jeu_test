@@ -457,17 +457,18 @@ textarea::-webkit-input-placeholder {
     /* ⭐ Taille proportionnelle (tu l'avais déjà) */
     width: 12%;
 
-    transform: rotate(90deg);
-    cursor: pointer;
-    z-index: 5;
-    display: none;
-
-    /* ⭐ On transforme l'image en vrai papier */
+    /* ⭐ Le papier est maintenant un DIV → on lui remet l'apparence d'un papier */
     background-image: url('style/images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 
-    padding: 6px; /* petit padding pour le texte */
+    /* ⭐ Pour que le texte soit bien placé */
+    padding: 8px;
+
+    transform: rotate(90deg);
+    cursor: pointer;
+    z-index: 5;
+    display: none;
 }
 
 /* ⭐ Texte sur le petit papier */
@@ -526,6 +527,7 @@ textarea::-webkit-input-placeholder {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     line-height: 1.4;
 }
+
 
 /* ============================
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
