@@ -167,17 +167,10 @@ restartBtn.addEventListener('click', (e) => {
 // ⭐⭐ PAPIER : zoom comme le boîtier ⭐⭐
 const paperZoom = document.getElementById('paper-zoom');
 const paperContent = document.getElementById('paper-content');
-const paperTextZoom = document.getElementById('paper-text');
 
-// Ouvrir le zoom + copier le texte
+// Ouvrir le zoom
 eldrinPaper.addEventListener('click', (e) => {
     e.stopPropagation();
-
-    const smallText = document.querySelector('.paper-small-text');
-    if (smallText) {
-        paperTextZoom.innerHTML = smallText.innerHTML;
-    }
-
     paperZoom.style.display = "flex";
 });
 
