@@ -165,6 +165,7 @@ restartBtn.addEventListener('click', (e) => {
 
 // ===============================
 // ⭐⭐ PAPIER : zoom comme le boîtier ⭐⭐
+// ===============================
 const paperZoom = document.getElementById('paper-zoom');
 const paperContent = document.getElementById('paper-content');
 
@@ -202,6 +203,7 @@ document.getElementById("zone-enigme2").addEventListener("click", function() {
 
 // ===============================
 // ⭐⭐ BOÎTIER MAGIQUE : ouverture du boîtier zoomé ⭐⭐
+// ===============================
 document.getElementById("boitier-code").addEventListener("click", function(e) {
     e.stopPropagation();
     document.getElementById("boitier-zoom").style.display = "flex";
@@ -209,6 +211,8 @@ document.getElementById("boitier-code").addEventListener("click", function(e) {
 
 // ===============================
 // ⭐⭐ FERMETURE PRIORITAIRE : boîtier zoomé puis grande box ⭐⭐
+// ===============================
+
 document.addEventListener("click", function(e) {
 
     const bigBox = document.getElementById("enigme2-box");
