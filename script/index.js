@@ -164,16 +164,40 @@ restartBtn.addEventListener('click', (e) => {
 });
 
 // ===============================
-// ⭐⭐ PAPIER : (ZOOM SUPPRIMÉ)
-// ===============================
+// ⭐⭐ PAPIER : zoom comme le boîtier ⭐⭐
+const paperZoom = document.getElementById('paper-zoom');
+const paperContent = document.getElementById('paper-content');
+const paperTextZoom = document.getElementById('paper-text');
 
-// ❌ On retire tout le code lié au zoom
-// ❌ Plus de paperZoom, paperContent, paperTextZoom
-// ❌ Le clic sur le papier ne fait plus rien
-
+// Ouvrir le zoom + copier le texte
 eldrinPaper.addEventListener('click', (e) => {
     e.stopPropagation();
-    // Le papier ne zoom plus
+
+    const smallText = document.querySelector('.paper-small-text');
+    if (smallText) {
+        paperTextZoom.innerHTML = smallText.innerHTML;
+    }
+
+    paperZoom.style.display = "flex";
+});
+
+// Fermeture prioritaire : zoom → bulle
+document.addEventListener("click", function(e) {
+
+    if (paperZoom.style.display === "flex") {
+        if (!e.target.closest("#paper-content") && e.target.id !== "eldrin-paper") {
+            paperZoom.style.display = "none";
+            return;
+        }
+    }
+
+    if (eldrinBubble.style.display === "block") {
+        if (!e.target.closest("#eldrin-bubble") && e.target.id !== "eldrin-img") {
+            eldrinBubble.style.display = "none";
+            eldrinImg.style.display = "none";
+            eldrinPaper.style.display = "none";
+        }
+    }
 });
 
 // ===============================
