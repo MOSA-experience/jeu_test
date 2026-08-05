@@ -1,4 +1,390 @@
 /* ============================
+   IMPORT POLICE
+   ============================ */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400;700&display=swap');
+
+/* ============================
+   BASE : écran + image scroll
+   ============================ */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+
+    /* ⭐ Page scrollable mais scrollbar transparente */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+
+    font-family: 'IM Fell English', serif;
+    text-transform: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Conteneur scrollable */
+.image-scroll {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none;
+    cursor: grab; /* ⭐ curseur propre */
+}
+
+.image-scroll::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Image non déformée + scroll */
+.image-scroll img {
+    display: block;
+    height: 150vh;
+    width: auto;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+
+    /* ⭐ Empêche le navigateur de capturer l’image */
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none; /* ⭐ essentiel */
+}
+
+/* ============================
+   OVERLAY + BOX PARCHEMIN
+   ============================ */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10;
+}
+
+/* Box parchemin */
+.intro-box {
+    color: #ffffff;
+
+    /* ⭐ Légèrement plus petit */
+    width: clamp(280px, 80vw, 600px);
+    height: clamp(260px, 70vh, 600px);
+
+    padding: clamp(18px, 3.5vw, 30px);
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 25px rgba(255, 220, 150, 0.4),
+        0 0 60px rgba(255, 200, 120, 0.2);
+
+    border: 3px solid rgba(80, 60, 40, 0.6);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative; /* ⭐ flèches dedans */
+
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.intro-box::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Titres */
+.intro-box h2 {
+    text-align: center;
+    margin: 0 0 20px 0;
+
+    font-size: clamp(16px, 3vw, 26px);
+
+    color: #2B1A01;
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.6),
+        0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* Texte */
+.intro-content {
+    margin-top: 10px;
+
+    font-size: clamp(16px, 2.5vw, 19px);
+
+    line-height: 1.45;
+    padding-right: 10px;
+}
+
+.intro-content p {
+    color: #2B1A01;
+    font-weight: bold;
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.5),
+        0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* ============================
+   FLÈCHES (DANS LE PARCHEMIN)
+   ============================ */
+
+.arrow {
+    position: absolute;
+    bottom: 0px;
+
+    font-size: clamp(28px, 5vw, 42px);
+
+    font-weight: bold;
+    cursor: pointer;
+    color: #3b2f1c;
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.5),
+        0 0 6px rgba(255, 255, 255, 0.7);
+
+    transition: transform 0.2s;
+    user-select: none;
+    z-index: 20;
+}
+
+.arrow-next {
+    right: 20px;
+}
+
+.arrow-prev {
+    left: 20px;
+}
+
+.arrow-next:hover,
+.arrow-prev:hover {
+    transform: scale(1.25);
+}
+
+/* ============================
+   BOUTON FIXE
+   ============================ */
+
+.help-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: clamp(35px, 6vw, 60px);
+    height: clamp(35px, 6vw, 60px);
+    font-size: clamp(18px, 3.5vw, 30px);
+
+    background: radial-gradient(circle, #f8e7c4, #c7a878);
+    color: #3b2f1c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow:
+        0 0 10px rgba(255, 240, 200, 0.6),
+        0 0 25px rgba(255, 200, 120, 0.4);
+}
+
+/* ============================
+   BARRE D'ÉCRITURE INVISIBLE
+   ============================ */
+
+input[type="text"],
+textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(0,0,0,0);
+    caret-color: transparent !important;
+    font-family: 'IM Fell English', serif;
+    font-size: 26px;
+}
+
+input[type="text"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: transparent;
+}
+
+* {
+    caret-color: transparent !important;
+}
+
+/* ============================
+   CROIX DE FERMETURE
+   ============================ */
+.close-parchment {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: bold;
+
+    color: #3b2f1c;
+  
+    cursor: pointer;
+    z-index: 30;
+
+    box-shadow:
+        0 0 6px rgba(0,0,0,0.4),
+        0 0 10px rgba(255, 200, 120, 0.4);
+
+    transition: transform 0.15s, background 0.15s;
+}
+
+/* ============================
+   BOUTON INDICE (bas gauche)
+   ============================ */
+.hint-button {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+
+    width: clamp(35px, 6vw, 60px);
+    height: clamp(35px, 6vw, 60px);
+    font-size: clamp(20px, 4vw, 32px);
+
+    background: radial-gradient(circle, #f8e7c4, #c7a878);
+    color: #3b2f1c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+
+    box-shadow:
+        0 0 10px rgba(255, 240, 200, 0.6),
+        0 0 25px rgba(255, 200, 120, 0.4);
+}
+
+/* ============================
+   BOX INDICE (plus petite)
+   ============================ */
+.hint-box {
+    width: clamp(200px, 55vw, 380px);   /* ⭐ plus petit */
+    height: clamp(160px, 45vh, 320px);  /* ⭐ plus petit */
+
+    padding: clamp(12px, 3vw, 20px);    /* ⭐ réduit */
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 20px rgba(255, 220, 150, 0.35),
+        0 0 45px rgba(255, 200, 120, 0.25);
+
+    border: 3px solid rgba(80, 60, 40, 0.6);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.hint-box::-webkit-scrollbar {
+    width: 0;
+}
+
+/* ============================
+   CROIX DE FERMETURE INDICE (plus petite)
+   ============================ */
+.close-hint {
+    position: absolute;
+    top: 8px;       /* ⭐ plus haut */
+    right: 8px;     /* ⭐ plus proche du bord */
+
+    font-size: clamp(12px, 2vw, 16px); /* ⭐ plus petit */
+    font-weight: bold;
+
+    color: #3b2f1c;
+    cursor: pointer;
+    z-index: 30;
+
+    box-shadow:
+        0 0 6px rgba(0,0,0,0.4),
+        0 0 10px rgba(255, 200, 120, 0.4);
+
+    transition: transform 0.15s;
+}
+
+.close-hint:hover {
+    transform: scale(1.2);
+}
+
+/* ============================
+   TEXTE INDICE (plus petit)
+   ============================ */
+.hint-content {
+    font-size: clamp(12px, 2vw, 16px);
+    line-height: 1.35;
+    color: #2B1A01;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.5),
+        0 0 4px rgba(255, 255, 255, 0.7);
+}
+
+/* ============================
+        ZONE ÉNIGME 1 
+   ============================ */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.zone-enigme1 {
+    position: absolute;
+    top: 67%;
+    left: 89%;
+    width: 2%;
+    height: 5%;
+    border: transparent;
+    background: transparent;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* ============================
+        ELDRIN IMAGE
+   ============================ */
+#eldrin-img {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: clamp(300px, 34vw, 420px);
+    height: auto;
+    z-index: 60;
+    pointer-events: none;
+}
+
+/* ============================
         BULLE ELDRIN
    ============================ */
 #eldrin-bubble {
@@ -29,38 +415,6 @@
 }
 
 /* ============================
-   ⭐ BOUTONS AUDIO + RESTART (REGROUPÉS)
-   ============================ */
-
-/* Boutons */
-#eldrin-audio-btn,
-#eldrin-restart-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: inline-block;
-}
-
-/* Images des boutons */
-#eldrin-audio-btn img,
-#eldrin-restart-btn img {
-    width: clamp(25px, 2vw, 35px);
-    height: auto;
-    pointer-events: none;
-}
-
-/* ============================
-        PAPIER DANS LA BULLE
-   ============================ */
-.bubble-anchor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-/* ============================
         PAPIER DANS LA BULLE
    ============================ */
 .bubble-anchor {
@@ -74,14 +428,11 @@
 #eldrin-paper {
     position: absolute;
 
-    /* ⭐ Même position visuelle, mais par rapport au BAS */
-    bottom: 2px;   /* équivalent à ton ancien top: 550px */
-    left: 160px;    /* on garde exactement ta valeur */
+    bottom: 2px;
+    left: 160px;
 
-    /* ⭐ Taille proportionnelle */
     width: 12%;
 
-    /* ⭐ Apparence du papier */
     background-image: url('style/images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -91,23 +442,50 @@
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
-    display: none;
+
+    display: block; /* ⭐ important */
 }
 
-/* ⭐ Texte sur le petit papier */
-.paper-small-text {
+/* ⭐ Texte sur le papier */
+#eldrin-paper-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+
     font-family: 'IM Fell English', serif;
-    font-size: 0.55vw;
+    font-size: 10px;
     color: #2B1A01;
-    text-align: center;
     line-height: 1.2;
+    text-align: left;
+
+    z-index: 6; /* ⭐ au-dessus du papier */
+}
+
+/* ============================
+   ⭐ BOUTONS AUDIO + RESTART
+   ============================ */
+#eldrin-audio-btn,
+#eldrin-restart-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#eldrin-audio-btn img,
+#eldrin-restart-btn img {
+    width: clamp(25px, 2vw, 35px);
+    height: auto;
+    pointer-events: none;
 }
 
 /* ============================
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
    ============================ */
 .intro-content img {
-    width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
+    width: clamp(25px, 2vw, 35px);
     height: auto;
     vertical-align: middle;
 }
@@ -116,22 +494,20 @@
 #eldrin-audio-btn,
 #eldrin-restart-btn {
     background: none;
-    border: none;   /* pour tester */
+    border: none;
     padding: 0;
-    cursor: pointer;         /* ⭐ montre que c’est cliquable */
+    cursor: pointer;
     display: inline-block;
 
-    /* ⭐⭐ AJOUT ESSENTIEL ⭐⭐ */
-    position: relative;      /* active le z-index */
-    z-index: 9999;           /* passe au-dessus de la bulle */
+    position: relative;
+    z-index: 9999;
 }
 
-/* Images dans les boutons audio + restart */
 #eldrin-audio-btn img,
 #eldrin-restart-btn img {
-    width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
+    width: clamp(25px, 2vw, 35px);
     height: auto;
-    pointer-events: none; 
+    pointer-events: none;
 }
 
 /* ============================
@@ -213,7 +589,7 @@
 
 /* ⭐⭐⭐ BOÎTIER AGRANDI ⭐⭐⭐ */
 #boitier-zoom {
-    display: none !important; /* ⭐ Correction : empêche l'apparition au chargement */
+    display: none !important;
     position: fixed;
     top: 50%;
     left: 50%;
