@@ -460,14 +460,12 @@ textarea::-webkit-input-placeholder {
 #eldrin-paper {
     position: absolute;
 
-    /* ⭐ Même position visuelle, mais par rapport au BAS */
-    bottom: 2px;   /* équivalent à ton ancien top: 550px */
-    left: 160px;    /* on garde exactement ta valeur */
+    /* ⭐ Position du papier dans la bulle */
+    bottom: 2px;
+    left: 160px;
 
-    /* ⭐ Taille proportionnelle */
     width: 12%;
 
-    /* ⭐ Apparence du papier */
     background-image: url('style/images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -477,17 +475,41 @@ textarea::-webkit-input-placeholder {
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
-    display: none;
+
+    display: block; /* ⭐ tu veux qu'il soit visible */
 }
 
-/* ⭐ Texte sur le petit papier */
+/* ⭐ Texte sur le petit papier dans la bulle (désactivé) */
 .paper-small-text {
-    font-family: 'IM Fell English', serif;
-    font-size: 0.55vw;
-    color: #2B1A01;
-    text-align: center;
-    line-height: 1.2;
+    display: none; /* ⭐ tu ne veux plus de texte dans la bulle */
 }
+
+/* ============================
+   ⭐ TEXTE SUR LE PAPIER NORMAL
+   ============================ */
+
+#eldrin-paper-container {
+    position: relative;
+    display: inline-block;
+}
+
+#eldrin-paper-img {
+    display: block;
+}
+
+#paper-text {
+    position: absolute;
+    top: 20px;      /* ajuste selon ton image */
+    left: 20px;     /* ajuste selon ton image */
+    width: 80%;
+    font-size: 12px;
+    color: #2B1A01;
+    font-family: 'IM Fell English', serif;
+    line-height: 1.2;
+    z-index: 10;    /* ⭐ au-dessus du papier */
+    pointer-events: none;
+}
+
 
 /* ============================
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
