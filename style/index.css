@@ -415,6 +415,38 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
+   ⭐ BOUTONS AUDIO + RESTART (REGROUPÉS)
+   ============================ */
+
+/* Boutons */
+#eldrin-audio-btn,
+#eldrin-restart-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Images des boutons */
+#eldrin-audio-btn img,
+#eldrin-restart-btn img {
+    width: clamp(25px, 2vw, 35px);
+    height: auto;
+    pointer-events: none;
+}
+
+/* ============================
+        PAPIER DANS LA BULLE
+   ============================ */
+.bubble-anchor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* ============================
         PAPIER DANS LA BULLE
    ============================ */
 .bubble-anchor {
@@ -428,11 +460,14 @@ textarea::-webkit-input-placeholder {
 #eldrin-paper {
     position: absolute;
 
-    bottom: 2px;
-    left: 160px;
+    /* ⭐ Même position visuelle, mais par rapport au BAS */
+    bottom: 2px;   /* équivalent à ton ancien top: 550px */
+    left: 160px;    /* on garde exactement ta valeur */
 
+    /* ⭐ Taille proportionnelle */
     width: 12%;
 
+    /* ⭐ Apparence du papier */
     background-image: url('style/images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -442,50 +477,23 @@ textarea::-webkit-input-placeholder {
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
-
-    display: block; /* ⭐ important */
+    display: none;
 }
 
-/* ⭐ Texte sur le papier */
-#eldrin-paper-text {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 200px;
-
+/* ⭐ Texte sur le petit papier */
+.paper-small-text {
     font-family: 'IM Fell English', serif;
-    font-size: 10px;
+    font-size: 0.55vw;
     color: #2B1A01;
+    text-align: center;
     line-height: 1.2;
-    text-align: left;
-
-    z-index: 6; /* ⭐ au-dessus du papier */
-}
-
-/* ============================
-   ⭐ BOUTONS AUDIO + RESTART
-   ============================ */
-#eldrin-audio-btn,
-#eldrin-restart-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: inline-block;
-}
-
-#eldrin-audio-btn img,
-#eldrin-restart-btn img {
-    width: clamp(25px, 2vw, 35px);
-    height: auto;
-    pointer-events: none;
 }
 
 /* ============================
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
    ============================ */
 .intro-content img {
-    width: clamp(25px, 2vw, 35px);
+    width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
     height: auto;
     vertical-align: middle;
 }
@@ -494,20 +502,22 @@ textarea::-webkit-input-placeholder {
 #eldrin-audio-btn,
 #eldrin-restart-btn {
     background: none;
-    border: none;
+    border: none;   /* pour tester */
     padding: 0;
-    cursor: pointer;
+    cursor: pointer;         /* ⭐ montre que c’est cliquable */
     display: inline-block;
 
-    position: relative;
-    z-index: 9999;
+    /* ⭐⭐ AJOUT ESSENTIEL ⭐⭐ */
+    position: relative;      /* active le z-index */
+    z-index: 9999;           /* passe au-dessus de la bulle */
 }
 
+/* Images dans les boutons audio + restart */
 #eldrin-audio-btn img,
 #eldrin-restart-btn img {
-    width: clamp(25px, 2vw, 35px);
+    width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
     height: auto;
-    pointer-events: none;
+    pointer-events: none; 
 }
 
 /* ============================
@@ -589,7 +599,7 @@ textarea::-webkit-input-placeholder {
 
 /* ⭐⭐⭐ BOÎTIER AGRANDI ⭐⭐⭐ */
 #boitier-zoom {
-    display: none !important;
+    display: none !important; /* ⭐ Correction : empêche l'apparition au chargement */
     position: fixed;
     top: 50%;
     left: 50%;
