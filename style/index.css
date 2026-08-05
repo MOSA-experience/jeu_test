@@ -1,210 +1,647 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Jeu test</title>
-    <link rel="stylesheet" href="style/index.css">
-</head>
-<body>
+/* ============================
+   IMPORT POLICE
+   ============================ */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:wght@400;700&display=swap');
 
-    <!-- IMAGE + ZONE ÉNIGME 1 + ZONE ÉNIGME 2 -->
-    <div class="image-scroll">
-        <div class="image-container">
-            <img src="style/images/fond_jeu_test.png" alt="escape game map" draggable="false">
+/* ============================
+   BASE : écran + image scroll
+   ============================ */
 
-            <div class="zone-enigme1"></div>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
 
-            <!-- ⭐ Zone énigme 2 fixée sur l'image ⭐ -->
-            <div id="zone-enigme2"></div>
+    /* ⭐ Page scrollable mais scrollbar transparente */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
 
-        </div>
-    </div>
+    font-family: 'IM Fell English', serif;
+    text-transform: none;
+}
 
-    <!-- Overlay + box explicative -->
-    <div id="intro-overlay" class="overlay">
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 10px;
+}
 
-        <div class="intro-box"
-             style="background-image: url('style/images/parchemin.jpg');"
-             onclick="event.stopPropagation();">
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: transparent;
+}
 
-            <div class="close-parchment">✖</div>
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
 
-            <!-- ONGLET 1 -->
-            <div id="page1" class="intro-page">
-                <h2>Le mystère d'Eldoria</h2>
+/* Conteneur scrollable */
+.image-scroll {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none;
+    cursor: grab; /* ⭐ curseur propre */
+}
 
-                <div class="intro-content">
-                    <p>
-                        Vous êtes né à Eldoria, un petit village où la magie fait partie du quotidien.
-                        Ici, les lanternes s’illuminent à la tombée de la nuit sans qu’aucune flamme ne les éclaire,
-                        les créatures de la forêt vivent en harmonie avec les habitants et chaque ruelle semble
-                        raconter une histoire oubliée.
-                    </p>
+.image-scroll::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
 
-                    <p>
-                        Depuis toujours, ce village vous émerveille. Pourtant, une question ne cesse de vous revenir :
-                        d’où vient toute cette magie ? Les légendes sont nombreuses et personne ne semble connaître
-                        la véritable origine de ce lieu extraordinaire.
-                    </p>
+/* Image non déformée + scroll */
+.image-scroll img {
+    display: block;
+    height: 150vh;
+    width: auto;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
 
-                    <p>
-                        Une rumeur traverse les générations. On raconte qu’un livre, écrit lors de la fondation du village,
-                        renferme toute son histoire et les secrets de sa magie. Beaucoup ont tenté de le retrouver,
-                        mais aucun n’y est parvenu.
-                    </p>
+    /* ⭐ Empêche le navigateur de capturer l’image */
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none; /* ⭐ essentiel */
+}
 
-                    <p>
-                        Aujourd’hui, vous décidez de partir à sa recherche pour espérer découvrir la véritable histoire d’Eldoria.
-                    </p>
-                </div>
+/* ============================
+   OVERLAY + BOX PARCHEMIN
+   ============================ */
 
-                <div class="arrow arrow-next" onclick="showPage2()">↠</div>
-            </div>
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
 
-            <!-- ONGLET 2 -->
-            <div id="page2" class="intro-page" style="display:none;">
-                <h2>Instructions</h2>
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-                <div class="intro-content">
-                    <p>
-                        Dans cette aventure, tu devras explorer Eldoria et résoudre des énigmes.
-                        Chaque énigme te rapprochera du livre légendaire qui renferme les secrets du village.
-                    </p>
+    z-index: 10;
+}
 
-                    <p>
-                        Observe attentivement la carte, interagis avec les éléments, et fais preuve de logique.
-                        Certaines réponses se cachent dans les détails.
-                    </p>
+/* Box parchemin */
+.intro-box {
+    color: #ffffff;
 
-                    <p>
-                        Si jamais tu as besoin d’aide tu peux cliquer sur le point d’interrogation en bas à gauche.
-                        Pour réouvrir le parchemin, clique sur le bouton en bas à droite.
-                    </p>
+    /* ⭐ Légèrement plus petit */
+    width: clamp(280px, 80vw, 600px);
+    height: clamp(260px, 70vh, 600px);
 
-                    <p>
-                        Parfois tu auras un texte à lire. Clique sur 
-                        <img src="audios/audio.png" alt="audio"> pour l’écouter.
-                    </p>
+    padding: clamp(18px, 3.5vw, 30px);
+    border-radius: 12px;
 
-                    <p>
-                        Pour commencer, je te conseille de demander de l’aide à quelqu’un. 
-                        Va voir du côté du restaurant, à droite de la fontaine. Tu y trouveras sûrement 
-                        Eldrin, installé à une table comme à son habitude. Il pourra sûrement t’aider.
-                        Bonne chance, voyageur. Que la magie d’Eldoria guide tes pas.
-                    </p>
-                </div>
+    box-shadow:
+        0 0 25px rgba(255, 220, 150, 0.4),
+        0 0 60px rgba(255, 200, 120, 0.2);
 
-                <div class="arrow arrow-prev" onclick="showPage1()">↞</div>
-            </div>
+    border: 3px solid rgba(80, 60, 40, 0.6);
 
-        </div>
-    </div>
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    <!-- Bouton pour réafficher / cacher la box -->
-    <div class="help-button" onclick="toggleIntro()">✦</div>
+    position: relative; /* ⭐ flèches dedans */
 
-    <!-- Bouton indice -->
-    <div class="hint-button" onclick="toggleHint()">?</div>
+    overflow-y: auto;
+    scrollbar-width: none;
+}
 
-    <!-- Fenêtre des indices -->
-    <div id="hint-overlay" class="overlay" style="display:none;">
-        <div class="hint-box"
-             style="background-image: url('style/images/parchemin.jpg');"
-             onclick="event.stopPropagation();">
+.intro-box::-webkit-scrollbar {
+    width: 0px;
+}
 
-            <div class="close-hint">✖</div>
+/* Titres */
+.intro-box h2 {
+    text-align: center;
+    margin: 0 0 20px 0;
 
-            <h2>Indice</h2>
+    font-size: clamp(16px, 3vw, 26px);
 
-            <div class="hint-content">
-                <p>Ici tu pourras afficher un indice ou une solution.</p>
-                <p>Tu peux mettre plusieurs paragraphes, ou même plusieurs pages.</p>
-            </div>
+    color: #2B1A01;
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.6),
+        0 0 6px rgba(255, 255, 255, 0.7);
+}
 
-        </div>
-    </div>
+/* Texte */
+.intro-content {
+    margin-top: 10px;
 
-    <!-- ⭐ Image Eldrin -->
-    <img id="eldrin-img" src="style/images/eldrin.png" alt="Eldrin" style="display:none;">
+    font-size: clamp(16px, 2.5vw, 19px);
 
-    <!-- ⭐ Bulle de dialogue -->
-    <div id="eldrin-bubble" style="display:none; background-image: url('style/images/fond_bulle_eldrin.jpg'); background-size: cover; background-position: center;">
+    line-height: 1.45;
+    padding-right: 10px;
+}
 
-        <div class="bubble-anchor">
-            <img id="eldrin-paper" src="style/images/papier.jpg" alt="papier">
-        </div>
+.intro-content p {
+    color: #2B1A01;
+    font-weight: bold;
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.5),
+        0 0 6px rgba(255, 255, 255, 0.7);
+}
 
-        <p id="eldrin-text">
-            Bonjour, <br> Je suis Eldrin. J’imagine que tu as entendu parler de cet étrange livre...
-            Personne ne sait vraiment d’où il vient. Certains disent qu’il renferme l’histoire de notre village et qu’il 
-            raconte comment la magie est arrivée jusqu’ici. Malheureusement, je ne peux pas t’en dire davantage. 
-            En revanche, il y a peut-être quelqu’un qui pourra te donner des réponses. <br> Au bout du chemin se trouve 
-            une vieille maison abandonnée... Enfin, c’est ce que pensent la plupart des habitants. En réalité, Eldorin, un 
-            vieux mage y vit encore. Il connaît les anciennes légendes d’Eldoria mieux que quiconque, et certains disent 
-            qu’il est le seul à savoir où se cache le fameux livre que tu recherches. Va le trouver. Si quelqu’un peut t’aider 
-            à découvrir ce que tu cherches, c’est bien lui. Cependant, fais attention. Malgré son vieil âge, il a encore toute 
-            sa tête et se méfie énormément des inconnus. Il ne te donnera pas les réponses si facilement. <br> Voici un papier 
-            qui pourra sûrement t’aider. <br> Que la magie d’Eldoria t’accompagne. L’avenir de notre village repose peut-être 
-            entre tes mains... Bonne chance !
-        </p>
+/* ============================
+   FLÈCHES (DANS LE PARCHEMIN)
+   ============================ */
 
-        <!-- ⭐ Bouton audio -->
-        <button id="eldrin-audio-btn" class="audio-btn">
-            <img src="audios/audio.png" alt="audio">
-        </button>
+.arrow {
+    position: absolute;
+    bottom: 0px;
 
-        <!-- ⭐ Bouton recommencer -->
-        <button id="eldrin-restart-btn" class="audio-btn">
-            <img src="audios/restart.png" alt="restart">
-        </button>
+    font-size: clamp(28px, 5vw, 42px);
 
-        <!-- ⭐ Audio -->
-        <audio id="eldrin-audio" src="audios/voix-eldrin.mp3"></audio>
+    font-weight: bold;
+    cursor: pointer;
+    color: #3b2f1c;
+    text-shadow:
+        2px 2px 3px rgba(0, 0, 0, 0.5),
+        0 0 6px rgba(255, 255, 255, 0.7);
 
-    </div>
+    transition: transform 0.2s;
+    user-select: none;
+    z-index: 20;
+}
 
-    <!-- ⭐ Papier -->
-       <div id="eldrin-paper">
-            <img id="eldrin-paper" src="style/images/papier.jpg" alt="papier">
-            <p id="paper-text">
-               la Vérité ne se révèle qu’à ceux qui savent attendre. les sages 
-               Explorent, Lisent, Observent, puis Réfléchissent.
-            </p>
-        </div>
+.arrow-next {
+    right: 20px;
+}
 
-    <!-- ⭐ Fenêtre zoom papier -->
-    <div id="paper-zoom">
-        <div id="paper-content">
-            <p id="paper-text">
-               la Vérité ne se révèle qu’à ceux qui savent attendre. les sages 
-               Explorent, Lisent, Observent, puis Réfléchissent.
-            </p>
-        </div>
-    </div>
+.arrow-prev {
+    left: 20px;
+}
 
-    <!-- ⭐⭐⭐ BOX CODE ÉNIGME 2 ⭐⭐⭐ -->
-    <div id="enigme2-box" class="code-box">
+.arrow-next:hover,
+.arrow-prev:hover {
+    transform: scale(1.25);
+}
 
-        <!-- ⭐ Porte fermée -->
-        <div class="code-content">
+/* ============================
+   BOUTON FIXE
+   ============================ */
 
-            <!-- ⭐ Petit boîtier magique -->
-            <div id="boitier-code"></div>
+.help-button {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
 
-        </div>
-    </div>
+    width: clamp(35px, 6vw, 60px);
+    height: clamp(35px, 6vw, 60px);
+    font-size: clamp(18px, 3.5vw, 30px);
 
-    <!-- ⭐⭐⭐ BOÎTIER ZOOMÉ (fenêtre centrale) ⭐⭐⭐ -->
-    <div id="boitier-zoom">
-        <input type="text" id="enigme2-input" placeholder="Code...">
-        <button id="enigme2-validate">Valider</button>
-        <div id="enigme2-error"></div>
-    </div>
+    background: radial-gradient(circle, #f8e7c4, #c7a878);
+    color: #3b2f1c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    box-shadow:
+        0 0 10px rgba(255, 240, 200, 0.6),
+        0 0 25px rgba(255, 200, 120, 0.4);
+}
 
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+/* ============================
+   BARRE D'ÉCRITURE INVISIBLE
+   ============================ */
 
-    <script src="script/index.js"></script>
+input[type="text"],
+textarea {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(0,0,0,0);
+    caret-color: transparent !important;
+    font-family: 'IM Fell English', serif;
+    font-size: 26px;
+}
 
-</body>
-</html>
+input[type="text"]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: transparent;
+}
+
+* {
+    caret-color: transparent !important;
+}
+
+/* ============================
+   CROIX DE FERMETURE
+   ============================ */
+.close-parchment {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: bold;
+
+    color: #3b2f1c;
+  
+    cursor: pointer;
+    z-index: 30;
+
+    box-shadow:
+        0 0 6px rgba(0,0,0,0.4),
+        0 0 10px rgba(255, 200, 120, 0.4);
+
+    transition: transform 0.15s, background 0.15s;
+}
+
+/* ============================
+   BOUTON INDICE (bas gauche)
+   ============================ */
+.hint-button {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+
+    width: clamp(35px, 6vw, 60px);
+    height: clamp(35px, 6vw, 60px);
+    font-size: clamp(20px, 4vw, 32px);
+
+    background: radial-gradient(circle, #f8e7c4, #c7a878);
+    color: #3b2f1c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+
+    box-shadow:
+        0 0 10px rgba(255, 240, 200, 0.6),
+        0 0 25px rgba(255, 200, 120, 0.4);
+}
+
+/* ============================
+   BOX INDICE (plus petite)
+   ============================ */
+.hint-box {
+    width: clamp(200px, 55vw, 380px);   /* ⭐ plus petit */
+    height: clamp(160px, 45vh, 320px);  /* ⭐ plus petit */
+
+    padding: clamp(12px, 3vw, 20px);    /* ⭐ réduit */
+    border-radius: 10px;
+
+    box-shadow:
+        0 0 20px rgba(255, 220, 150, 0.35),
+        0 0 45px rgba(255, 200, 120, 0.25);
+
+    border: 3px solid rgba(80, 60, 40, 0.6);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.hint-box::-webkit-scrollbar {
+    width: 0;
+}
+
+/* ============================
+   CROIX DE FERMETURE INDICE (plus petite)
+   ============================ */
+.close-hint {
+    position: absolute;
+    top: 8px;       /* ⭐ plus haut */
+    right: 8px;     /* ⭐ plus proche du bord */
+
+    font-size: clamp(12px, 2vw, 16px); /* ⭐ plus petit */
+    font-weight: bold;
+
+    color: #3b2f1c;
+    cursor: pointer;
+    z-index: 30;
+
+    box-shadow:
+        0 0 6px rgba(0,0,0,0.4),
+        0 0 10px rgba(255, 200, 120, 0.4);
+
+    transition: transform 0.15s;
+}
+
+.close-hint:hover {
+    transform: scale(1.2);
+}
+
+/* ============================
+   TEXTE INDICE (plus petit)
+   ============================ */
+.hint-content {
+    font-size: clamp(12px, 2vw, 16px);
+    line-height: 1.35;
+    color: #2B1A01;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.5),
+        0 0 4px rgba(255, 255, 255, 0.7);
+}
+
+/* ============================
+        ZONE ÉNIGME 1 
+   ============================ */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.zone-enigme1 {
+    position: absolute;
+    top: 67%;
+    left: 89%;
+    width: 2%;
+    height: 5%;
+    border: transparent;
+    background: transparent;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* ============================
+        ELDRIN IMAGE
+   ============================ */
+#eldrin-img {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: clamp(300px, 34vw, 420px);
+    height: auto;
+    z-index: 60;
+    pointer-events: none;
+}
+
+/* ============================
+        BULLE ELDRIN
+   ============================ */
+#eldrin-bubble {
+    position: fixed;
+    bottom: 20px;
+    left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
+    max-width: clamp(260px, 28vw, 380px);
+
+    background-image: url('/jeux/style/images/fond_bulle_eldrin.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(14px, 2vw, 18px);
+    color: #2B1A01;
+
+    display: none;
+    z-index: 61;
+}
+
+#eldrin-bubble p {
+    margin: 0 0 10px 0;
+}
+
+/* ============================
+   ⭐ BOUTONS AUDIO + RESTART (REGROUPÉS)
+   ============================ */
+
+/* Boutons */
+#eldrin-audio-btn,
+#eldrin-restart-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Images des boutons */
+#eldrin-audio-btn img,
+#eldrin-restart-btn img {
+    width: clamp(25px, 2vw, 35px);
+    height: auto;
+    pointer-events: none;
+}
+
+/* ============================
+        PAPIER DANS LA BULLE
+   ============================ */
+.bubble-anchor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* ============================
+        PAPIER DANS LA BULLE
+   ============================ */
+.bubble-anchor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#eldrin-paper {
+    position: absolute;
+
+    /* ⭐ Même position visuelle, mais par rapport au BAS */
+    bottom: 2px;   /* équivalent à ton ancien top: 550px */
+    left: 160px;    /* on garde exactement ta valeur */
+
+    /* ⭐ Taille proportionnelle */
+    width: 12%;
+
+    /* ⭐ Apparence du papier */
+    background-image: url('style/images/papier.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding: 6px;
+
+    transform: rotate(90deg);
+    cursor: pointer;
+    z-index: 5;
+    display: none;
+}
+
+/* ⭐ Texte sur le petit papier */
+.paper-small-text {
+    font-family: 'IM Fell English', serif;
+    font-size: 0.55vw;
+    color: #2B1A01;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* ============================
+   ⭐ IMAGE AUDIO DANS LE PARCHEMIN
+   ============================ */
+.intro-content img {
+    width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Boutons audio + restart */
+#eldrin-audio-btn,
+#eldrin-restart-btn {
+    background: none;
+    border: none;   /* pour tester */
+    padding: 0;
+    cursor: pointer;         /* ⭐ montre que c’est cliquable */
+    display: inline-block;
+
+    /* ⭐⭐ AJOUT ESSENTIEL ⭐⭐ */
+    position: relative;      /* active le z-index */
+    z-index: 9999;           /* passe au-dessus de la bulle */
+}
+
+/* Images dans les boutons audio + restart */
+#eldrin-audio-btn img,
+#eldrin-restart-btn img {
+    width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
+    height: auto;
+    pointer-events: none; 
+}
+
+/* ============================
+          Zone enigme 2
+   ============================ */
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+#zone-enigme2 {
+    width: 200px;
+    height: 300px;
+    border: transparent;
+    background-color: transparent;
+    position: absolute;
+    top: 28%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+/* ============================
+   Box code énigme 2 — PORTE DU MAGE
+============================ */
+
+.code-box {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 0, 0, 0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+}
+
+.code-content {
+    background-image: url("images/porte_maison_eldorin_fermee.png");
+    background-size: cover;
+    background-position: center;
+    padding: 50px 40px;
+    width: 420px;
+    height: 520px;
+    border: 0.5px solid #3a2a1a;
+    border-radius: 12px;
+    box-shadow: 0 0 45px rgba(255, 200, 120, 0.9);
+    text-align: center;
+    position: relative;
+}
+
+/* ⭐⭐⭐ BOÎTIER CODE⭐⭐⭐ */
+#boitier-code {
+    position: absolute;
+    width: 22px;
+    height: 30px;
+
+    top: 48%;
+    left: 35%;
+
+    background: url("images/fond_bois_code_enigme2.jpg");
+    background-size: cover;
+    background-position: center;
+
+    border: 4px solid #000000;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+#boitier-code:hover {
+    transform: scale(1.12);
+}
+
+/* ⭐⭐⭐ BOÎTIER AGRANDI ⭐⭐⭐ */
+#boitier-zoom {
+    display: none !important; /* ⭐ Correction : empêche l'apparition au chargement */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 420px;
+
+    background: #1a1a1a;
+    border: 6px solid #4a2f1a;
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 35px rgba(0, 120, 255, 0.9),
+        inset 0 0 18px rgba(0, 120, 255, 0.5);
+
+    z-index: 99999;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ⭐ Champ noir centré */
+#boitier-zoom input {
+    width: 80%;
+    padding: 12px;
+    border: 3px solid #4a2f1a;
+    border-radius: 6px;
+    background: black;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+#boitier-zoom button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: linear-gradient(#4a2f1a, #6b3b1a);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
