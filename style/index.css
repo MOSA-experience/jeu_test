@@ -449,45 +449,50 @@ textarea::-webkit-input-placeholder {
     height: 100%;
 }
 
-/* ⭐ Papier dans la bulle — position ORIGINALE conservée */
+/* ⭐ Papier + texte dans le papier (version finale fusionnée) */
 #eldrin-paper {
     position: absolute;
 
-    bottom: 2px;   /* ⭐ position d’origine */
-    left: 160px;   /* ⭐ position d’origine */
+    bottom: 2px;      /* position d’origine */
+    left: 160px;      /* position d’origine */
 
-    width: 12%;
-
-    background-image: url('style/images/papier.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    padding: 6px;
-
-    transform: rotate(90deg);
-    cursor: pointer;
-    z-index: 5;
-
-    display: block;
-}
-
-/* ⭐ Texte SUR le papier — version fonctionnelle */
-#eldrin-paper {
-    position: absolute;
-    bottom: 2px;
-    left: 160px;
     width: 12%;
     background-image: url('style/images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+
     padding: 6px;
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
     display: block;
 
-    position: relative; /* ⭐ AJOUTÉ — le texte se positionne dans le papier */
+    /* ⭐ Permet au texte de se positionner DANS le papier */
+    position: relative;
 }
+
+#paper-text {
+    position: absolute;
+
+    /* ⭐ Position interne AU PAPIER */
+    top: 5px;
+    left: 5px;
+
+    /* ⭐ Largeur idéale pour 2–3 lignes */
+    width: 85%;
+
+    /* ⭐ Taille parfaite pour tenir dans le papier */
+    font-size: 6px;
+
+    color: #2B1A01;
+    font-family: 'IM Fell English', serif;
+    line-height: 1.2;
+    text-align: center;
+
+    z-index: 6;
+    pointer-events: none;
+}
+
 
 /* ⭐ Texte sur le petit papier dans la bulle (désactivé) */
 .paper-small-text {
