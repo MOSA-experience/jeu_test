@@ -450,12 +450,11 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ⭐ Papier dans la bulle — position ORIGINALE conservée */
-/* ⭐ Papier dans la bulle — position ORIGINALE conservée */
 #eldrin-paper {
     position: absolute;
 
-    bottom: 2px;   /* ⭐ position d’origine */
-    left: 160px;   /* ⭐ position d’origine */
+    bottom: 2px;   /* ⭐ C’EST ICI QUE TU L’AVAIS MIS */
+    left: 160px;   /* ⭐ EXACTEMENT LA POSITION ORIGINALE */
 
     width: 12%;
 
