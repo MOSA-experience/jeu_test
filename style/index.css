@@ -391,8 +391,10 @@ textarea::-webkit-input-placeholder {
     position: fixed;
     bottom: 20px;
     left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
-    width: clamp(320px, 40vw, 580px);
-    min-width: 300px;
+    width: clamp(420px, 45vw, 700px);
+    max-width: 700px;
+    min-width: 320px;
+    min-height: 220px;
 
     background-image: url('images/fond_bulle_eldrin.jpg');
     background-size: cover;
@@ -400,7 +402,7 @@ textarea::-webkit-input-placeholder {
     background-position: center;
 
     border-radius: 14px;
-    padding: 22px 26px;
+    padding: 24px 28px;
     box-shadow: 0 0 18px rgba(0,0,0,0.4);
 
     font-family: 'IM Fell English', serif;
@@ -409,6 +411,15 @@ textarea::-webkit-input-placeholder {
 
     display: none;
     z-index: 61;
+}
+
+.eldrin-bubble-paper {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 60px;
+    height: auto;
+    pointer-events: none;
 }
 
 #eldrin-bubble p {
