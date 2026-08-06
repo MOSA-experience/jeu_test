@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Jeu test</title>
     <link rel="stylesheet" href="style/index.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
 
@@ -168,7 +167,7 @@
     <img id="eldrin-paper" src="style/images/papier.jpg" alt="papier">
 
     <!-- ⭐ Fenêtre zoom papier -->
-    <div id="paper-zoom" style="display:none;">
+    <div id="paper-zoom">
         <div id="paper-content">
             <p id="paper-text">
                la Vérité ne se révèle qu’à ceux qui savent attendre. les sages 
@@ -178,7 +177,7 @@
     </div>
 
     <!-- ⭐⭐⭐ BOX CODE ÉNIGME 2 ⭐⭐⭐ -->
-    <div id="enigme2-box" class="code-box" style="display:none;">
+    <div id="enigme2-box" class="code-box">
 
         <!-- ⭐ Porte fermée -->
         <div class="code-content">
@@ -190,248 +189,13 @@
     </div>
 
     <!-- ⭐⭐⭐ BOÎTIER ZOOMÉ (fenêtre centrale) ⭐⭐⭐ -->
-    <div id="boitier-zoom" style="display:none;">
+    <div id="boitier-zoom">
         <input type="text" id="enigme2-input" placeholder="Code...">
         <button id="enigme2-validate">Valider</button>
-        <div id="enigme2-error" aria-live="polite"></div>
+        <div id="enigme2-error"></div>
     </div>
 
-    <!-- Script : version plus robuste intégrée -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-        // Récupérations avec protections
-        const closeParch = document.querySelector('.close-parchment');
-        const overlay = document.getElementById('intro-overlay');
-        const hintOverlay = document.getElementById('hint-overlay');
-        const page1 = document.getElementById('page1');
-        const page2 = document.getElementById('page2');
-        const imgScroll = document.querySelector('.image-scroll');
-        const zone1 = document.querySelector('.zone-enigme1');
-        const eldrinImg = document.getElementById('eldrin-img');
-        const eldrinBubble = document.getElementById('eldrin-bubble');
-        const eldrinPaper = document.getElementById('eldrin-paper');
-        const audio = document.getElementById('eldrin-audio');
-        const audioBtn = document.getElementById('eldrin-audio-btn');
-        const restartBtn = document.getElementById('eldrin-restart-btn');
-        const paperZoom = document.getElementById('paper-zoom');
-        const paperContent = document.getElementById('paper-content');
-        const zone2 = document.getElementById('zone-enigme2');
-        const boitierCode = document.getElementById('boitier-code');
-        const enigme2Box = document.getElementById('enigme2-box');
-        const boitierZoom = document.getElementById('boitier-zoom');
-        const enigme2Validate = document.getElementById('enigme2-validate');
-        const enigme2Input = document.getElementById('enigme2-input');
-        const enigme2Error = document.getElementById('enigme2-error');
-
-        // Fermeture du parchemin (croix)
-        if (closeParch && overlay) {
-            closeParch.onclick = () => { overlay.style.display = 'none'; };
-        }
-
-        // Fermeture en cliquant à côté (overlay)
-        if (overlay) {
-            overlay.addEventListener('click', function (e) {
-                if (!e.target.classList.contains('overlay')) return;
-                overlay.style.display = 'none';
-            });
-        }
-
-        // Bouton ✦
-        window.toggleIntro = function() {
-            if (!overlay) return;
-            overlay.style.display =
-                (overlay.style.display === 'none' || overlay.style.display === '') ? 'flex' : 'none';
-        };
-
-        // Navigation parchemin
-        window.showPage2 = function() {
-            if (page1) page1.style.display = 'none';
-            if (page2) page2.style.display = 'block';
-        };
-        window.showPage1 = function() {
-            if (page2) page2.style.display = 'none';
-            if (page1) page1.style.display = 'block';
-        };
-
-        // Drag image (si présent)
-        if (imgScroll) {
-            let isDragging = false;
-            let startX, startY, scrollLeft, scrollTop;
-
-            imgScroll.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                imgScroll.style.cursor = "grabbing";
-                startX = e.pageX - imgScroll.offsetLeft;
-                startY = e.pageY - imgScroll.offsetTop;
-                scrollLeft = imgScroll.scrollLeft;
-                scrollTop = imgScroll.scrollTop;
-            });
-
-            imgScroll.addEventListener('mouseup', () => {
-                isDragging = false;
-                imgScroll.style.cursor = "grab";
-            });
-
-            imgScroll.addEventListener('mouseleave', () => {
-                isDragging = false;
-                imgScroll.style.cursor = "grab";
-            });
-
-            imgScroll.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                const x = e.pageX - imgScroll.offsetLeft;
-                const y = e.pageY - imgScroll.offsetTop;
-                imgScroll.scrollLeft = scrollLeft - (x - startX);
-                imgScroll.scrollTop = scrollTop - (y - startY);
-            });
-
-            imgScroll.style.cursor = "grab";
-        }
-
-        // Indice
-        window.toggleHint = function() {
-            if (!hintOverlay) return;
-            hintOverlay.style.display =
-                (hintOverlay.style.display === 'none' || hintOverlay.style.display === '') ? 'flex' : 'none';
-        };
-        const closeHint = document.querySelector('.close-hint');
-        if (closeHint && hintOverlay) closeHint.onclick = () => { hintOverlay.style.display = 'none'; };
-        if (hintOverlay) {
-            hintOverlay.addEventListener('click', function (e) {
-                if (!e.target.classList.contains('overlay')) return;
-                hintOverlay.style.display = 'none';
-            });
-        }
-
-        // Zone 1 : Eldrin
-        function toggleEldrin() {
-            if (!eldrinImg || !eldrinBubble || !eldrinPaper) return;
-            const isHidden = eldrinImg.style.display === "none" || eldrinImg.style.display === "";
-            eldrinImg.style.display = isHidden ? "block" : "none";
-            eldrinBubble.style.display = isHidden ? "block" : "none";
-            eldrinPaper.style.display = isHidden ? "block" : "none";
-        }
-        if (zone1) zone1.addEventListener('click', (e) => { e.stopPropagation(); toggleEldrin(); });
-
-        // Cacher tout quand on clique ailleurs
-        document.addEventListener('click', (e) => {
-            const target = e.target;
-            if (target && (target.classList.contains('zone-enigme1') ||
-                target.id === 'eldrin-img' ||
-                target.id === 'eldrin-bubble' ||
-                target.closest && target.closest('#eldrin-bubble') ||
-                target.id === 'eldrin-audio-btn' ||
-                target.id === 'eldrin-restart-btn' ||
-                target.id === 'eldrin-paper' ||
-                target.classList.contains('overlay'))) {
-                return;
-            }
-            if (eldrinImg) eldrinImg.style.display = "none";
-            if (eldrinBubble) eldrinBubble.style.display = "none";
-            if (eldrinPaper) eldrinPaper.style.display = "none";
-        });
-
-        // Audio play/pause
-        if (audio && audioBtn) {
-            audioBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (audio.paused) audio.play().catch(()=>{});
-                else audio.pause();
-            });
-        }
-        // Audio restart
-        if (restartBtn && audio) {
-            restartBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                audio.currentTime = 0;
-                audio.play().catch(()=>{});
-            });
-        }
-
-        // Papier zoom
-        if (eldrinPaper && paperZoom) {
-            eldrinPaper.addEventListener('click', (e) => {
-                e.stopPropagation();
-                paperZoom.style.display = "flex";
-            });
-        }
-        // Fermeture prioritaire : zoom → bulle
-        document.addEventListener("click", function(e) {
-            if (paperZoom && paperZoom.style.display === "flex") {
-                if (!e.target.closest || (!e.target.closest("#paper-content") && e.target.id !== "eldrin-paper")) {
-                    paperZoom.style.display = "none";
-                    return;
-                }
-            }
-
-            if (eldrinBubble && eldrinBubble.style.display === "block") {
-                if (!e.target.closest || (!e.target.closest("#eldrin-bubble") && e.target.id !== "eldrin-img")) {
-                    eldrinBubble.style.display = "none";
-                    if (eldrinImg) eldrinImg.style.display = "none";
-                    if (eldrinPaper) eldrinPaper.style.display = "none";
-                }
-            }
-        });
-
-        // Énigme 2 : ouverture grande box
-        if (zone2 && enigme2Box) {
-            zone2.addEventListener('click', function() {
-                enigme2Box.style.display = "flex";
-            });
-        }
-
-        // Boîtier zoom
-        if (boitierCode && boitierZoom) {
-            boitierCode.addEventListener('click', function(e) {
-                e.stopPropagation();
-                boitierZoom.style.display = "flex";
-            });
-        }
-
-        // Fermeture prioritaire boitier/box
-        document.addEventListener('click', function(e) {
-            const target = e.target;
-            if (boitierZoom && boitierZoom.style.display === "flex") {
-                if (!target.closest || (!target.closest("#boitier-zoom") && !target.closest("#boitier-code"))) {
-                    boitierZoom.style.display = "none";
-                    return;
-                }
-            }
-            if (enigme2Box && enigme2Box.style.display === "flex") {
-                if (!target.closest || (!target.closest(".code-content") && target.id !== "zone-enigme2")) {
-                    enigme2Box.style.display = "none";
-                }
-            }
-        });
-
-        // Vérification code
-        if (enigme2Validate && enigme2Input && enigme2Error) {
-            enigme2Validate.addEventListener('click', function() {
-                const code = enigme2Input.value.trim().toLowerCase();
-                if (code === "velor") {
-                    // chemin corrigé
-                    const codeContent = document.querySelector(".code-content");
-                    if (codeContent) {
-                        codeContent.style.backgroundImage =
-                            'url("style/images/porte_maison_eldorin_ouverte.png")';
-                    }
-                    if (boitierZoom) boitierZoom.style.display = "none";
-                    if (boitierCode) boitierCode.style.display = "none";
-
-                    setTimeout(() => {
-                        // Redirection : garder relative, mais si la page n'existe pas il n'y aura pas d'erreur JS
-                        window.location.href = "enigme2.html";
-                    }, 1500);
-                } else {
-                    enigme2Error.textContent = "Le mot de passe est incorrect.";
-                }
-            });
-        }
-
-    });
-    </script>
+    <script src="script/index.js"></script>
 
 </body>
 </html>
