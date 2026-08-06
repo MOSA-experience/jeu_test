@@ -510,13 +510,13 @@ textarea::-webkit-input-placeholder {
 
 #paper-text-normal {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 80%;
-    font-size: 1em;
+    top: 15px;        /* légèrement ajusté pour mieux centrer */
+    left: 15px;       /* légèrement ajusté pour mieux centrer */
+    width: 70%;       /* force le texte à se mettre sur 2–3 lignes */
+    font-size: 6px;   /* très petit pour que tout rentre */
     color: #2B1A01;
     font-family: 'IM Fell English', serif;
-    line-height: 1.2;
+    line-height: 1.1; /* compact pour éviter les débordements */
     z-index: 10;
     pointer-events: none;
 }
