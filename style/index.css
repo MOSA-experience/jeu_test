@@ -508,7 +508,7 @@ textarea::-webkit-input-placeholder {
     display: block;
 }
 
-#paper-text-normal {
+#paper-text {
     position: absolute;
     top: 15px;        /* légèrement ajusté pour mieux centrer */
     left: 15px;       /* légèrement ajusté pour mieux centrer */
