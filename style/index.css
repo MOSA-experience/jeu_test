@@ -449,32 +449,33 @@ textarea::-webkit-input-placeholder {
     height: 100%;
 }
 
-/* ⭐ Papier + texte dans le papier (version finale fusionnée) */
+/* ⭐ Papier dans la bulle — position ORIGINALE conservée */
 #eldrin-paper {
     position: absolute;
 
-    bottom: 2px;      /* position d’origine */
-    left: 160px;      /* position d’origine */
+    bottom: 2px;   /* ⭐ position d’origine */
+    left: 160px;   /* ⭐ position d’origine */
 
     width: 12%;
+
     background-image: url('style/images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 
     padding: 6px;
+
     transform: rotate(90deg);
     cursor: pointer;
     z-index: 5;
-    display: block;
 
-    /* ⭐ Permet au texte de se positionner DANS le papier */
-    position: relative;
+    display: block;
 }
 
+/* ⭐ Texte SUR le papier — 2 à 3 lignes dans le papier */
 #paper-text {
     position: absolute;
 
-    /* ⭐ Position interne AU PAPIER */
+    /* ⭐ Position interne AU PAPIER (sans toucher au papier lui-même) */
     top: 5px;
     left: 5px;
 
