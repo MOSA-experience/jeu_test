@@ -393,7 +393,7 @@ textarea::-webkit-input-placeholder {
     left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
     max-width: clamp(260px, 28vw, 380px);
 
-    background-image: url('/jeux/style/images/fond_bulle_eldrin.jpg');
+    background-image: url('images/fond_bulle_eldrin.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -468,7 +468,7 @@ textarea::-webkit-input-placeholder {
     width: 12%;
 
     /* ⭐ Apparence du papier */
-    background-image: url('style/images/papier.jpg');
+    background-image: url('images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -512,7 +512,7 @@ textarea::-webkit-input-placeholder {
 }
 
 #paper-content {
-    background-image: url('/jeux/style/images/papier.jpg');
+    background-image: url('images/papier.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     width: 60vw;
