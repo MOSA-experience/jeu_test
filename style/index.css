@@ -475,19 +475,20 @@ textarea::-webkit-input-placeholder {
 #paper-text {
     position: absolute;
 
-    /* ⭐ Position du texte par rapport au papier */
-    bottom: 25px;
-    left: 165px;
+    /* ⭐ Position interne AU PAPIER (et non à la bulle) */
+    top: 5px;        /* place le texte en haut du papier */
+    left: 5px;       /* léger décalage pour ne pas coller au bord */
 
-    width: 8%;          /* ⭐ force 2–3 lignes */
-    font-size: 5px;     /* ⭐ minuscule pour tout faire rentrer */
+    width: 90%;      /* ⭐ force 3 lignes */
+    font-size: 5px;  /* ⭐ minuscule pour tout faire rentrer */
     color: #2B1A01;
     font-family: 'IM Fell English', serif;
-    line-height: 1.1;   /* ⭐ compact */
+    line-height: 1.1; /* ⭐ compact */
     text-align: center;
     z-index: 6;
     pointer-events: none;
 }
+
 
 /* ⭐ Texte sur le petit papier dans la bulle (désactivé) */
 .paper-small-text {
