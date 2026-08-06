@@ -389,27 +389,30 @@ textarea::-webkit-input-placeholder {
    ============================ */
 #eldrin-bubble {
     position: fixed;
-    bottom: 20px;
-    left: calc(50px + clamp(300px, 34vw, 420px) + 30px);
-    width: clamp(420px, 45vw, 700px);
-    max-width: 700px;
-    min-width: 320px;
-    min-height: 220px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(95vw, 1100px);
+    max-width: 95vw;
+    min-width: 90vw;
+    min-height: 60vh;
+    max-height: 85vh;
 
     background-image: url('images/fond_bulle_eldrin.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
-    border-radius: 14px;
-    padding: 24px 28px;
-    box-shadow: 0 0 18px rgba(0,0,0,0.4);
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: 0 0 22px rgba(0,0,0,0.45);
 
     font-family: 'IM Fell English', serif;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(16px, 2vw, 20px);
     color: #2B1A01;
 
     display: none;
+    overflow-y: auto;
     z-index: 61;
 }
 
