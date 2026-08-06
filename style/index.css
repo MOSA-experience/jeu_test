@@ -450,6 +450,7 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ⭐ Papier dans la bulle — position ORIGINALE conservée */
+/* ⭐ Papier dans la bulle — position ORIGINALE conservée */
 #eldrin-paper {
     position: absolute;
 
@@ -493,6 +494,7 @@ textarea::-webkit-input-placeholder {
     z-index: 6;
     pointer-events: none;
 }
+
 
 
 /* ⭐ Texte sur le petit papier dans la bulle (désactivé) */
