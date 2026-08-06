@@ -389,14 +389,15 @@ textarea::-webkit-input-placeholder {
    ============================ */
 #eldrin-bubble {
     position: fixed;
-    bottom: 10px;
+    top: 5vh;
     left: 50%;
     transform: translateX(-50%);
     width: min(95vw, 1100px);
     max-width: 95vw;
-    min-width: 90vw;
-    min-height: 60vh;
-    max-height: 85vh;
+    min-height: 70vh;
+    max-height: 90vh;
+    padding: 30px 32px;
+    overflow-y: auto;
 
     background-image: url('images/fond_bulle_eldrin.jpg');
     background-size: cover;
@@ -404,7 +405,6 @@ textarea::-webkit-input-placeholder {
     background-position: center;
 
     border-radius: 16px;
-    padding: 28px 32px;
     box-shadow: 0 0 22px rgba(0,0,0,0.45);
 
     font-family: 'IM Fell English', serif;
@@ -412,21 +412,21 @@ textarea::-webkit-input-placeholder {
     color: #2B1A01;
 
     display: none;
-    overflow-y: auto;
     z-index: 61;
-}
-
-.eldrin-bubble-paper {
-    position: absolute;
-    top: 16px;
-    right: 18px;
-    width: 60px;
-    height: auto;
-    pointer-events: none;
 }
 
 #eldrin-bubble p {
     margin: 0 0 10px 0;
+    line-height: 1.6;
+}
+
+#eldrin-bubble .bubble-anchor img {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 72px;
+    height: auto;
+    pointer-events: none;
 }
 
 /* ============================
@@ -461,39 +461,6 @@ textarea::-webkit-input-placeholder {
     width: 100%;
     height: 100%;
 }
-/* ============================
-        PAPIER DANS LA BULLE
-   ============================ */
-.bubble-anchor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#eldrin-paper {
-    position: absolute;
-
-    /* ⭐ Même position visuelle, mais par rapport au BAS */
-    bottom: 2px;   /* équivalent à ton ancien top: 550px */
-    left: 160px;    /* on garde exactement ta valeur */
-
-    /* ⭐ Taille proportionnelle */
-    width: 12%;
-
-    /* ⭐ Apparence du papier */
-    background-image: url('style/images/papier.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    padding: 6px;
-
-    transform: rotate(90deg);
-    cursor: pointer;
-    z-index: 5;
-    display: none;
-}
 
 /* ⭐ Texte sur le petit papier */
 .paper-small-text {
@@ -503,9 +470,6 @@ textarea::-webkit-input-placeholder {
     text-align: center;
     line-height: 1.2;
 }
-
-
-
 
 /* ============================
         ZOOM PAPIER
@@ -547,6 +511,36 @@ textarea::-webkit-input-placeholder {
     font-size: clamp(22px, 3vw, 32px);
     color: #2B1A01;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+/* ============================
+   ⭐ IMAGE AUDIO DANS LE PARCHEMIN
+   ============================ */
+.intro-content img {
+    width: clamp(25px, 2vw, 35px);   /* même taille que les boutons audio */
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Boutons audio + restart */
+#eldrin-audio-btn,
+#eldrin-restart-btn {
+    background: none;
+    border: none;   /* pour tester */
+    padding: 0;
+    cursor: pointer;         /* ⭐ montre que c’est cliquable */
+    display: inline-block;
+
+    /* ⭐⭐ AJOUT ESSENTIEL ⭐⭐ */
+    position: relative;      /* active le z-index */
+    z-index: 9999;           /* passe au-dessus de la bulle */
+}
+
+/* Images dans les boutons audio + restart */
+#eldrin-audio-btn img,
+#eldrin-restart-btn img {
+    width: clamp(25px, 2vw, 35px);   /* ⭐ même taille que l’audio du parchemin */
+    height: auto;
+    pointer-events: none; 
 }
 /* ============================
    ⭐ IMAGE AUDIO DANS LE PARCHEMIN
