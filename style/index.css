@@ -448,6 +448,18 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ⭐ Papier dans la bulle — position ORIGINALE conservée */
+/* ============================
+        PAPIER DANS LA BULLE
+   ============================ */
+
+/* ⭐ bubble-anchor doit être relative pour que bottom:2px fonctionne */
+.bubble-anchor {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* ⭐ Papier dans la bulle — position ORIGINALE conservée */
 #eldrin-paper {
     position: absolute;
 
@@ -467,6 +479,9 @@ textarea::-webkit-input-placeholder {
     z-index: 5;
 
     display: block;
+
+    /* ⭐ AJOUTÉ : le texte se positionne DANS le papier */
+    position: relative;
 }
 
 /* ⭐ Texte SUR le papier — 2 à 3 lignes dans le papier */
@@ -491,6 +506,7 @@ textarea::-webkit-input-placeholder {
     z-index: 6;
     pointer-events: none;
 }
+
 
 /* ⭐ Texte sur le petit papier dans la bulle (désactivé) */
 .paper-small-text {
