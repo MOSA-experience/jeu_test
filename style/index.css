@@ -392,9 +392,6 @@ textarea::-webkit-input-placeholder {
     top: 5vh;
     left: 50%;
     transform: translateX(-50%);
-    /*width: min(95px, 1100px);*/
-    /*max-width: 95px;*/
-    /*min-height: 1170px;*/
     width:800px;
     height: auto;
     padding: 30px 32px;
@@ -458,7 +455,7 @@ textarea::-webkit-input-placeholder {
 .bubble-anchor {
     /*position: absolute;*/
     top: 80px;
-    left: 5px;
+    left: 45px;
    /* width: 100%;
     height: 100%;*/
 }
