@@ -454,9 +454,9 @@ textarea::-webkit-input-placeholder {
    ============================ */
 .bubble-anchor {
     position: absolute;
-    top: 580px;
+    top: 80px;
     left: 45px;
-    width: 100%;
+    width: 100px;
     height: 100%;
 }
 
