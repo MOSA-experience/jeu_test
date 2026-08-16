@@ -452,13 +452,13 @@ textarea::-webkit-input-placeholder {
 /* ============================
         PAPIER DANS LA BULLE
    ============================ */
-.small_paper {
-    /*position: absolute;
+/*.small_paper {
+    position: absolute;
     top: 80px;
-    left: 45px;*/
+    left: 45px;
     width: 10px;
     height: 10px;
-}
+}*/
 
 /* ⭐ Texte sur le petit papier */
 .paper-small-text {
