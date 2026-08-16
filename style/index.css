@@ -453,11 +453,9 @@ textarea::-webkit-input-placeholder {
         PAPIER DANS LA BULLE
    ============================ */
 .small_paper {
-    position: absolute;
-    top: 180px;
-    left: 145px;
-    /*width: 80px;
-    height: 20px;*/
+    position: 150px;
+    width: 60px;
+    height: 90px;
 }
 
 /* ⭐ Texte sur le petit papier */
