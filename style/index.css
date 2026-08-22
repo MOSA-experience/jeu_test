@@ -232,6 +232,10 @@ textarea::-webkit-input-placeholder {
     caret-color: transparent !important;
 }
 
+#intro-overlay {
+    pointer-events: none;
+}
+
 /* ============================
    CROIX DE FERMETURE
    ============================ */
