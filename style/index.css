@@ -454,7 +454,7 @@ textarea::-webkit-input-placeholder {
 /* ============================
         PAPIER DANS LA BULLE
    ============================ */
-.small_paper {
+.eldrin-paper {
     width: 90px;
     height: 60px;
     display: inline-block; /* ou block */
