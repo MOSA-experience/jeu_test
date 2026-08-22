@@ -457,7 +457,7 @@ textarea::-webkit-input-placeholder {
     height: 60px;
     display: inline-block; /* ou block */
     position: absolute;
-    bottom: 20px;   /* distance du bas */
+    bottom: 25px;   /* distance du bas */
     left: 170px;     /* distance du bord gauche */
 }
 
