@@ -453,8 +453,8 @@ textarea::-webkit-input-placeholder {
         PAPIER DANS LA BULLE
    ============================ */
 .small_paper {
-    width: 20px;
-    height: 20px;
+    width: 60px;
+    height: 90px;
     display: inline-block; /* ou block */
 }
 
