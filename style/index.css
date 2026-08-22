@@ -697,3 +697,7 @@ textarea::-webkit-input-placeholder {
     font-size: 18px;
     font-weight: bold;
 }
+
+#intro-overlay {
+    background: rgba(255,0,0,0.3);
+}
