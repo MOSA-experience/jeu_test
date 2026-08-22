@@ -130,7 +130,7 @@ document.addEventListener('click', (e) => {
     if (e.target.id === 'eldrin-restart-btn') return;
     if (e.target.id === 'eldrin-paper') return;
     if (e.target.classList.contains('overlay')) return;
-    if (e.target.id === 'zone-enigme2') return;
+    
 
     eldrinImg.style.display = "none";
     eldrinBubble.style.display = "none";
