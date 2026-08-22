@@ -455,6 +455,7 @@ textarea::-webkit-input-placeholder {
 .small_paper {
     width: 20px;
     height: 20px;
+    display: inline-block; /* ou block */
 }
 
 /* ⭐ Texte sur le petit papier */
