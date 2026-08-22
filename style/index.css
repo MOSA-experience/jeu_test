@@ -232,9 +232,7 @@ textarea::-webkit-input-placeholder {
     caret-color: transparent !important;
 }
 
-#intro-overlay {
-    pointer-events: none;
-}
+
 
 /* ============================
    CROIX DE FERMETURE
@@ -702,6 +700,4 @@ textarea::-webkit-input-placeholder {
     font-weight: bold;
 }
 
-#intro-overlay {
-    background: rgba(255,0,0,0.3);
-}
+
