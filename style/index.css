@@ -458,7 +458,7 @@ textarea::-webkit-input-placeholder {
     display: inline-block; /* ou block */
     position: absolute;
     bottom: 10px;   /* distance du bas */
-    left: 50px;     /* distance du bord gauche */
+    left: 150px;     /* distance du bord gauche */
 }
 
 /* ⭐ Texte sur le petit papier */
