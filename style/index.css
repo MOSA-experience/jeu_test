@@ -700,4 +700,10 @@ textarea::-webkit-input-placeholder {
     font-weight: bold;
 }
 
+#intro-overlay {
+    pointer-events: none;
+}
 
+.intro-box {
+    pointer-events: auto;
+}
