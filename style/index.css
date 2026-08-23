@@ -463,6 +463,15 @@ textarea::-webkit-input-placeholder {
     left: 170px;     /* distance du bord gauche */
 }
 
+/*===========================
+   Zoom papier eldrin-paper
+=============================*/
+
+.paper-wrapper {
+    overflow: hidden;
+    display: inline-block;
+}
+
 #eldrin-paper {
     transition: transform 0.3s ease;
 }
