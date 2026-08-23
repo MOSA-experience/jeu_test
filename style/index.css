@@ -468,7 +468,7 @@ textarea::-webkit-input-placeholder {
 }
 
 #eldrin-paper:hover {
-    transform: scale(2.5);
+    transform: scale(1.9);
 }
 
 /* ⭐ Texte sur le petit papier */
