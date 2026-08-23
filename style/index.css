@@ -463,6 +463,14 @@ textarea::-webkit-input-placeholder {
     left: 170px;     /* distance du bord gauche */
 }
 
+#eldrin-paper {
+    transition: transform 0.3s ease;
+}
+
+#eldrin-paper:hover {
+    transform: scale(1.2);
+}
+
 /* ⭐ Texte sur le petit papier */
 .paper-small-text {
     font-family: 'IM Fell English', serif;
