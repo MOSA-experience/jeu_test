@@ -455,7 +455,6 @@ textarea::-webkit-input-placeholder {
         PAPIER DANS LA BULLE
    ============================ */
 .eldrin-paper {
-    transform: rotate(90deg);
     width: 90px;
     height: 60px;
     display: inline-block; /* ou block */
