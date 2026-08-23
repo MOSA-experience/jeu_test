@@ -471,6 +471,7 @@ textarea::-webkit-input-placeholder {
 
 #eldrin-paper {
     transition: transform 0.3s ease;
+    transform-origin: center; /* zoom centré */
 }
 
 #eldrin-paper:hover {
