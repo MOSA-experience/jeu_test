@@ -454,18 +454,13 @@ textarea::-webkit-input-placeholder {
 /* ============================
         PAPIER DANS LA BULLE
    ============================ */
-/*.eldrin-paper {
+.eldrin-paper {
     width: 90px;
     height: 60px;
     display: inline-block; /* ou block */
-  /*  position: absolute;
+    position: absolute;
     bottom: 25px;   /* distance du bas */
-  /*  left: 170px;     /* distance du bord gauche */
-/*}*/
-
-.eldrin-paper {
-    background: url("style/images/papier.jpg") no-repeat center/cover;
-    padding: 20px;
+    left: 170px;     /* distance du bord gauche */
 }
 
 /* ⭐ Texte sur le petit papier */
