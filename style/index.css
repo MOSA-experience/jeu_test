@@ -415,10 +415,11 @@ textarea::-webkit-input-placeholder {
     z-index: 61;
 }
 
-#eldrin-bubble p {
+/*#eldrin-bubble p {
     margin: 0 0 10px 0;
     line-height: 1.6;
-}
+}*/
+
 
 #eldrin-bubble .bubble-anchor img {
     position: absolute;
