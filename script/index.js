@@ -164,36 +164,6 @@ restartBtn.addEventListener('click', (e) => {
     audio.play();
 });
 
-// ===============================
-// ⭐⭐ PAPIER : zoom comme le boîtier ⭐⭐
-// ===============================
-const paperZoom = document.getElementById('paper-zoom');
-const paperContent = document.getElementById('paper-content');
-
-// Ouvrir le zoom
-eldrinPaper.addEventListener('click', (e) => {
-    e.stopPropagation();
-    paperZoom.style.display = "flex";
-});
-
-// Fermeture prioritaire : zoom → bulle
-document.addEventListener("click", function(e) {
-
-    if (paperZoom.style.display === "flex") {
-        if (!e.target.closest("#paper-content") && e.target.id !== "eldrin-paper") {
-            paperZoom.style.display = "none";
-            return;
-        }
-    }
-
-    if (eldrinBubble.style.display === "block") {
-        if (!e.target.closest("#eldrin-bubble") && e.target.id !== "eldrin-img") {
-            eldrinBubble.style.display = "none";
-            eldrinImg.style.display = "none";
-            eldrinPaper.style.display = "none";
-        }
-    }
-});
 
 // ===============================
 // **⭐ ÉNIGME 2 : ouverture de la grande box**
