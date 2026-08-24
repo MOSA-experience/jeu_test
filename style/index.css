@@ -353,7 +353,7 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-        ZONE ÉNIGME 1 
+         ZONE ÉNIGME 1 
    ============================ */
 .image-container {
     position: relative;
@@ -374,7 +374,7 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-        ELDRIN IMAGE
+         ELDRIN IMAGE
    ============================ */
 #eldrin-img {
     position: fixed;
@@ -387,14 +387,14 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-        BULLE ELDRIN
+         BULLE ELDRIN
    ============================ */
 #eldrin-bubble {
     position: fixed;
     top: 5vh;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(300px, 85vw, 800px);
+    width: clamp(320px, 90vw, 575px);
     height: auto;
     max-height: 80vh;
     padding: 30px 32px;
@@ -453,7 +453,7 @@ textarea::-webkit-input-placeholder {
 }
 
 /* ============================
-        PAPIER DANS LA BULLE
+         PAPIER DANS LA BULLE
    ============================ */
 .eldrin-paper {
     width: 90px;
