@@ -420,6 +420,10 @@ textarea::-webkit-input-placeholder {
     line-height: 1.6;
 }*/
 
+#eldrin-text {
+    margin-top: 5px;
+}
+
 
 
 #eldrin-bubble .bubble-anchor img {
