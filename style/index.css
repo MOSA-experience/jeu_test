@@ -392,7 +392,7 @@ textarea::-webkit-input-placeholder {
 #eldrin-bubble {
     position: fixed;
     top: 5vh;
-    left: 40%;
+    left: 45%;
     transform: translateX(-50%);
     width:450px;
     height: 600px;
