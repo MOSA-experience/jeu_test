@@ -380,7 +380,7 @@ textarea::-webkit-input-placeholder {
     position: fixed;
     bottom: 0px;
     left: 28px;
-    width: 800px;
+    width: 500px;
     height: auto;
     z-index: 60;
     pointer-events: none;
