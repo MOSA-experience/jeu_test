@@ -417,7 +417,7 @@ textarea::-webkit-input-placeholder {
 
 
 #eldrin-text {
-    margin-top: 0px;
+    margin-top: -5px;
     font-size: 20px;
 }
 
