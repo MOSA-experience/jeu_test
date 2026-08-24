@@ -393,7 +393,6 @@ textarea::-webkit-input-placeholder {
     position: fixed;
     top: 5vh;
     left: 50%;
-    transform: translateX(-50%);
     width:800px;
     height: auto;
     padding: 30px 32px;
