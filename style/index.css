@@ -394,8 +394,8 @@ textarea::-webkit-input-placeholder {
     top: 5vh;
     left: 50%;
     transform: translateX(-50%);
-    width:800px;
-    height: auto;
+    width:700px;
+    height: 900px;
     padding: 30px 32px;
     overflow-y: auto;
    
