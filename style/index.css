@@ -415,13 +415,10 @@ textarea::-webkit-input-placeholder {
     z-index: 61;
 }
 
-/*#eldrin-bubble p {
-    margin: 0 0 10px 0;
-    line-height: 1.6;
-}*/
 
 #eldrin-text {
     margin-top: 5px;
+   font-size: 19px;
 }
 
 
